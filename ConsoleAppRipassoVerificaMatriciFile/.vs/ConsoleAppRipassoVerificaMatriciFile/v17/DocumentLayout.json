@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F5E7B009-D5FB-4EC3-809C-41BF557521D5}|ConsoleAppSplit\\ConsoleAppSplit.csproj|c:\\users\\utente\\source\\repos\\consoleappripassoverificamatricifile\\consoleappsplit\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5E7B009-D5FB-4EC3-809C-41BF557521D5}|ConsoleAppSplit\\ConsoleAppSplit.csproj|solutionrelative:consoleappsplit\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0FFF0C6-06BC-41A0-B1FF-18C32C2A5A4C}|ConsoleAppVotiQuadrimaestre\\ConsoleAppVotiQuadrimaestre.csproj|c:\\users\\utente\\source\\repos\\consoleappripassoverificamatricifile\\consoleappvotiquadrimaestre\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0FFF0C6-06BC-41A0-B1FF-18C32C2A5A4C}|ConsoleAppVotiQuadrimaestre\\ConsoleAppVotiQuadrimaestre.csproj|solutionrelative:consoleappvotiquadrimaestre\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F537D05-B71E-493B-982D-6641F92B4288}|Esercizio4\\Esercizio4.csproj|c:\\users\\utente\\source\\repos\\consoleappripassoverificamatricifile\\esercizio4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F537D05-B71E-493B-982D-6641F92B4288}|Esercizio4\\Esercizio4.csproj|solutionrelative:esercizio4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29FD57D0-574A-4562-A90E-A50ED76FD834}|Esercizio3\\Esercizio3.csproj|C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\esercizio3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29FD57D0-574A-4562-A90E-A50ED76FD834}|Esercizio3\\Esercizio3.csproj|solutionrelative:esercizio3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51912931-E4EF-406D-A471-9B46FD826C4F}|Esercizio2\\Esercizio2.csproj|C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\esercizio2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51912931-E4EF-406D-A471-9B46FD826C4F}|Esercizio2\\Esercizio2.csproj|solutionrelative:esercizio2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D510338-39C7-470E-9A8B-6B8D76BF52C3}|ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppRipassoVerificaMatriciFile.csproj|C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\consoleappripassoverificamatricifile\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D510338-39C7-470E-9A8B-6B8D76BF52C3}|ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppRipassoVerificaMatriciFile.csproj|solutionrelative:consoleappripassoverificamatricifile\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppVotiQuadrimaestre\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleAppVotiQuadrimaestre\\Program.cs",
+              "ToolTip": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppVotiQuadrimaestre\\Program.cs",
+              "RelativeToolTip": "ConsoleAppVotiQuadrimaestre\\Program.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAAAFgAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T20:37:38.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppSplit\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleAppSplit\\Program.cs",
+              "ToolTip": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppSplit\\Program.cs",
+              "RelativeToolTip": "ConsoleAppSplit\\Program.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAAAFkAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T18:35:03.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\Esercizio4\\Program.cs",
+              "RelativeDocumentMoniker": "Esercizio4\\Program.cs",
+              "ToolTip": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\Esercizio4\\Program.cs",
+              "RelativeToolTip": "Esercizio4\\Program.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwAcAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T15:10:17.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\Esercizio3\\Program.cs",
+              "RelativeDocumentMoniker": "Esercizio3\\Program.cs",
+              "ToolTip": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\Esercizio3\\Program.cs",
+              "RelativeToolTip": "Esercizio3\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T15:06:32.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\Esercizio2\\Program.cs",
+              "RelativeDocumentMoniker": "Esercizio2\\Program.cs",
+              "ToolTip": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\Esercizio2\\Program.cs",
+              "RelativeToolTip": "Esercizio2\\Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAiwBgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T14:55:43.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppRipassoVerificaMatriciFile\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleAppRipassoVerificaMatriciFile\\Program.cs",
+              "ToolTip": "C:\\Users\\Utente\\source\\repos\\ConsoleAppRipassoVerificaMatriciFile\\ConsoleAppRipassoVerificaMatriciFile\\Program.cs",
+              "RelativeToolTip": "ConsoleAppRipassoVerificaMatriciFile\\Program.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBcAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T14:27:52.874Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

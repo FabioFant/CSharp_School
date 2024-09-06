@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppEnumOrdinamento\ConsoleAppEnumOrdinamento\bin\Debug\ConsoleAppEnumOrdinamento.exe.config
+C:\Users\Utente\source\repos\ConsoleAppEnumOrdinamento\ConsoleAppEnumOrdinamento\bin\Debug\ConsoleAppEnumOrdinamento.exe
+C:\Users\Utente\source\repos\ConsoleAppEnumOrdinamento\ConsoleAppEnumOrdinamento\bin\Debug\ConsoleAppEnumOrdinamento.pdb
+C:\Users\Utente\source\repos\ConsoleAppEnumOrdinamento\ConsoleAppEnumOrdinamento\obj\Debug\ConsoleAppEnumOrdinamento.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppEnumOrdinamento\ConsoleAppEnumOrdinamento\obj\Debug\ConsoleAppEnumOrdinamento.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppEnumOrdinamento\ConsoleAppEnumOrdinamento\obj\Debug\ConsoleAppEnumOrdinamento.exe
+C:\Users\Utente\source\repos\ConsoleAppEnumOrdinamento\ConsoleAppEnumOrdinamento\obj\Debug\ConsoleAppEnumOrdinamento.pdb

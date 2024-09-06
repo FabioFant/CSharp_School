@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppReddito\bin\Debug\ConsoleAppReddito.exe.config
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppReddito\bin\Debug\ConsoleAppReddito.exe
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppReddito\bin\Debug\ConsoleAppReddito.pdb
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppReddito\obj\Debug\ConsoleAppReddito.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppReddito\obj\Debug\ConsoleAppReddito.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppReddito\obj\Debug\ConsoleAppReddito.exe
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppReddito\obj\Debug\ConsoleAppReddito.pdb

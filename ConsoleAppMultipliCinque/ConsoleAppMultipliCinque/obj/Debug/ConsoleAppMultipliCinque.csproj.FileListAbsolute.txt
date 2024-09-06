@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppMultipliCinque\ConsoleAppMultipliCinque\bin\Debug\ConsoleAppMultipliCinque.exe.config
+C:\Users\Utente\source\repos\ConsoleAppMultipliCinque\ConsoleAppMultipliCinque\bin\Debug\ConsoleAppMultipliCinque.exe
+C:\Users\Utente\source\repos\ConsoleAppMultipliCinque\ConsoleAppMultipliCinque\bin\Debug\ConsoleAppMultipliCinque.pdb
+C:\Users\Utente\source\repos\ConsoleAppMultipliCinque\ConsoleAppMultipliCinque\obj\Debug\ConsoleAppMultipliCinque.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppMultipliCinque\ConsoleAppMultipliCinque\obj\Debug\ConsoleAppMultipliCinque.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppMultipliCinque\ConsoleAppMultipliCinque\obj\Debug\ConsoleAppMultipliCinque.exe
+C:\Users\Utente\source\repos\ConsoleAppMultipliCinque\ConsoleAppMultipliCinque\obj\Debug\ConsoleAppMultipliCinque.pdb

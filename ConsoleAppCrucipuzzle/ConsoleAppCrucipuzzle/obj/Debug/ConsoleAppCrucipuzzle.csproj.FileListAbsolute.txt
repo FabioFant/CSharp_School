@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppCrucipuzzle\ConsoleAppCrucipuzzle\bin\Debug\ConsoleAppCrucipuzzle.exe.config
+C:\Users\Utente\source\repos\ConsoleAppCrucipuzzle\ConsoleAppCrucipuzzle\bin\Debug\ConsoleAppCrucipuzzle.exe
+C:\Users\Utente\source\repos\ConsoleAppCrucipuzzle\ConsoleAppCrucipuzzle\bin\Debug\ConsoleAppCrucipuzzle.pdb
+C:\Users\Utente\source\repos\ConsoleAppCrucipuzzle\ConsoleAppCrucipuzzle\obj\Debug\ConsoleAppCrucipuzzle.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppCrucipuzzle\ConsoleAppCrucipuzzle\obj\Debug\ConsoleAppCrucipuzzle.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppCrucipuzzle\ConsoleAppCrucipuzzle\obj\Debug\ConsoleAppCrucipuzzle.exe
+C:\Users\Utente\source\repos\ConsoleAppCrucipuzzle\ConsoleAppCrucipuzzle\obj\Debug\ConsoleAppCrucipuzzle.pdb

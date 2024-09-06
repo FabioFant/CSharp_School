@@ -1,0 +1,14 @@
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\bin\Debug\net8.0\ConsoleAppStringaSottoStringa.exe
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\bin\Debug\net8.0\ConsoleAppStringaSottoStringa.deps.json
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\bin\Debug\net8.0\ConsoleAppStringaSottoStringa.runtimeconfig.json
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\bin\Debug\net8.0\ConsoleAppStringaSottoStringa.dll
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\bin\Debug\net8.0\ConsoleAppStringaSottoStringa.pdb
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ConsoleAppStringaSottoStringa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ConsoleAppStringaSottoStringa.AssemblyInfoInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ConsoleAppStringaSottoStringa.AssemblyInfo.cs
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ConsoleAppStringaSottoStringa.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ConsoleAppStringaSottoStringa.dll
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\refint\ConsoleAppStringaSottoStringa.dll
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ConsoleAppStringaSottoStringa.pdb
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ConsoleAppStringaSottoStringa.genruntimeconfig.cache
+C:\Users\Utente\source\repos\ConsoleAppStringaSottoStringa\ConsoleAppStringaSottoStringa\obj\Debug\net8.0\ref\ConsoleAppStringaSottoStringa.dll

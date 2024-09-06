@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforteSemitoni\bin\Debug\ConsoleAppPianoforteSemitoni.exe.config
+C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforteSemitoni\bin\Debug\ConsoleAppPianoforteSemitoni.exe
+C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforteSemitoni\bin\Debug\ConsoleAppPianoforteSemitoni.pdb
+C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforteSemitoni\obj\Debug\ConsoleAppPianoforteSemitoni.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforteSemitoni\obj\Debug\ConsoleAppPianoforteSemitoni.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforteSemitoni\obj\Debug\ConsoleAppPianoforteSemitoni.exe
+C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforteSemitoni\obj\Debug\ConsoleAppPianoforteSemitoni.pdb

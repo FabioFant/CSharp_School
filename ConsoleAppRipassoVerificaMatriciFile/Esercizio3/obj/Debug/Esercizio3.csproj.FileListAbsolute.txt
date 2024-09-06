@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\Esercizio3\bin\Debug\Esercizio3.exe.config
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\Esercizio3\bin\Debug\Esercizio3.exe
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\Esercizio3\bin\Debug\Esercizio3.pdb
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\Esercizio3\obj\Debug\Esercizio3.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\Esercizio3\obj\Debug\Esercizio3.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\Esercizio3\obj\Debug\Esercizio3.exe
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\Esercizio3\obj\Debug\Esercizio3.pdb

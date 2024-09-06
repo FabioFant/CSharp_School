@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuadrato\bin\Debug\ConsoleAppQuadrato.exe.config
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuadrato\bin\Debug\ConsoleAppQuadrato.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuadrato\bin\Debug\ConsoleAppQuadrato.pdb
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuadrato\obj\Debug\ConsoleAppQuadrato.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuadrato\obj\Debug\ConsoleAppQuadrato.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuadrato\obj\Debug\ConsoleAppQuadrato.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuadrato\obj\Debug\ConsoleAppQuadrato.pdb

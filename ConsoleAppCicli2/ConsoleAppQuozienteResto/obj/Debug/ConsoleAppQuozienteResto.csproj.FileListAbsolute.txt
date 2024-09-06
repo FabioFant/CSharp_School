@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuozienteResto\bin\Debug\ConsoleAppQuozienteResto.exe.config
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuozienteResto\bin\Debug\ConsoleAppQuozienteResto.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuozienteResto\bin\Debug\ConsoleAppQuozienteResto.pdb
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuozienteResto\obj\Debug\ConsoleAppQuozienteResto.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuozienteResto\obj\Debug\ConsoleAppQuozienteResto.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuozienteResto\obj\Debug\ConsoleAppQuozienteResto.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppQuozienteResto\obj\Debug\ConsoleAppQuozienteResto.pdb

@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppOrologio\bin\Debug\ConsoleAppOrologio.exe.config
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppOrologio\bin\Debug\ConsoleAppOrologio.exe
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppOrologio\bin\Debug\ConsoleAppOrologio.pdb
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppOrologio\obj\Debug\ConsoleAppOrologio.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppOrologio\obj\Debug\ConsoleAppOrologio.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppOrologio\obj\Debug\ConsoleAppOrologio.exe
+C:\Users\Utente\source\repos\ConsoleAppReddito\ConsoleAppOrologio\obj\Debug\ConsoleAppOrologio.pdb

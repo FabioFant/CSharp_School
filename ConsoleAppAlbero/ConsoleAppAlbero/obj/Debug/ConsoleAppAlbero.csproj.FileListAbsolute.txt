@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlbero\bin\Debug\ConsoleAppAlbero.exe.config
+C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlbero\bin\Debug\ConsoleAppAlbero.exe
+C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlbero\bin\Debug\ConsoleAppAlbero.pdb
+C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlbero\obj\Debug\ConsoleAppAlbero.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlbero\obj\Debug\ConsoleAppAlbero.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlbero\obj\Debug\ConsoleAppAlbero.exe
+C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlbero\obj\Debug\ConsoleAppAlbero.pdb

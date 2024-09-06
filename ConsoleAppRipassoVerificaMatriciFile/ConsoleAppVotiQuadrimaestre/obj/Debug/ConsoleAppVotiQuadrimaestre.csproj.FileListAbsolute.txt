@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppVotiQuadrimaestre\bin\Debug\ConsoleAppVotiQuadrimaestre.exe.config
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppVotiQuadrimaestre\bin\Debug\ConsoleAppVotiQuadrimaestre.exe
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppVotiQuadrimaestre\bin\Debug\ConsoleAppVotiQuadrimaestre.pdb
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppVotiQuadrimaestre\obj\Debug\ConsoleAppVotiQuadrimaestre.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppVotiQuadrimaestre\obj\Debug\ConsoleAppVotiQuadrimaestre.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppVotiQuadrimaestre\obj\Debug\ConsoleAppVotiQuadrimaestre.exe
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppVotiQuadrimaestre\obj\Debug\ConsoleAppVotiQuadrimaestre.pdb

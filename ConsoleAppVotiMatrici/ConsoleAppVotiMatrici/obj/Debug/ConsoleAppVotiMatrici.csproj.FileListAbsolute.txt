@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppVotiMatrici\ConsoleAppVotiMatrici\bin\Debug\ConsoleAppVotiMatrici.exe.config
+C:\Users\Utente\source\repos\ConsoleAppVotiMatrici\ConsoleAppVotiMatrici\bin\Debug\ConsoleAppVotiMatrici.exe
+C:\Users\Utente\source\repos\ConsoleAppVotiMatrici\ConsoleAppVotiMatrici\bin\Debug\ConsoleAppVotiMatrici.pdb
+C:\Users\Utente\source\repos\ConsoleAppVotiMatrici\ConsoleAppVotiMatrici\obj\Debug\ConsoleAppVotiMatrici.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppVotiMatrici\ConsoleAppVotiMatrici\obj\Debug\ConsoleAppVotiMatrici.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppVotiMatrici\ConsoleAppVotiMatrici\obj\Debug\ConsoleAppVotiMatrici.exe
+C:\Users\Utente\source\repos\ConsoleAppVotiMatrici\ConsoleAppVotiMatrici\obj\Debug\ConsoleAppVotiMatrici.pdb

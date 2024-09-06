@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCostoProdotto\bin\Debug\ConsoleAppCostoProdotto.exe.config
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCostoProdotto\bin\Debug\ConsoleAppCostoProdotto.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCostoProdotto\bin\Debug\ConsoleAppCostoProdotto.pdb
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCostoProdotto\obj\Debug\ConsoleAppCostoProdotto.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCostoProdotto\obj\Debug\ConsoleAppCostoProdotto.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCostoProdotto\obj\Debug\ConsoleAppCostoProdotto.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCostoProdotto\obj\Debug\ConsoleAppCostoProdotto.pdb

@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppEserciziNatale\Esercizio7\bin\Debug\Esercizio7.exe.config
+C:\Users\Utente\source\repos\ConsoleAppEserciziNatale\Esercizio7\bin\Debug\Esercizio7.exe
+C:\Users\Utente\source\repos\ConsoleAppEserciziNatale\Esercizio7\bin\Debug\Esercizio7.pdb
+C:\Users\Utente\source\repos\ConsoleAppEserciziNatale\Esercizio7\obj\Debug\Esercizio7.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppEserciziNatale\Esercizio7\obj\Debug\Esercizio7.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppEserciziNatale\Esercizio7\obj\Debug\Esercizio7.exe
+C:\Users\Utente\source\repos\ConsoleAppEserciziNatale\Esercizio7\obj\Debug\Esercizio7.pdb

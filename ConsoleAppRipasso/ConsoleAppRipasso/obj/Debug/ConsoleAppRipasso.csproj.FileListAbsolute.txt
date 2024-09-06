@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppRipasso\ConsoleAppRipasso\bin\Debug\ConsoleAppRipasso.exe.config
+C:\Users\Utente\source\repos\ConsoleAppRipasso\ConsoleAppRipasso\bin\Debug\ConsoleAppRipasso.exe
+C:\Users\Utente\source\repos\ConsoleAppRipasso\ConsoleAppRipasso\bin\Debug\ConsoleAppRipasso.pdb
+C:\Users\Utente\source\repos\ConsoleAppRipasso\ConsoleAppRipasso\obj\Debug\ConsoleAppRipasso.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppRipasso\ConsoleAppRipasso\obj\Debug\ConsoleAppRipasso.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppRipasso\ConsoleAppRipasso\obj\Debug\ConsoleAppRipasso.exe
+C:\Users\Utente\source\repos\ConsoleAppRipasso\ConsoleAppRipasso\obj\Debug\ConsoleAppRipasso.pdb

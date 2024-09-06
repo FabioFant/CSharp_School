@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Utente\\source\\repos\\ConsoleAppMastermind\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E24D3651-11C0-46C1-B21A-A5336BFC253B}|ConsoleAppMastermind\\ConsoleAppMastermind.csproj|c:\\users\\utente\\source\\repos\\consoleappmastermind\\consoleappmastermind\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E24D3651-11C0-46C1-B21A-A5336BFC253B}|ConsoleAppMastermind\\ConsoleAppMastermind.csproj|solutionrelative:consoleappmastermind\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\ConsoleAppMastermind\\ConsoleAppMastermind\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleAppMastermind\\Program.cs",
+              "ToolTip": "C:\\Users\\Utente\\source\\repos\\ConsoleAppMastermind\\ConsoleAppMastermind\\Program.cs",
+              "RelativeToolTip": "ConsoleAppMastermind\\Program.cs",
+              "ViewState": "AQIAAJYAAAAAAAAAAAAQwKMAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T14:07:49.098Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppSplit\bin\Debug\ConsoleAppSplit.exe.config
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppSplit\bin\Debug\ConsoleAppSplit.exe
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppSplit\bin\Debug\ConsoleAppSplit.pdb
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppSplit\obj\Debug\ConsoleAppSplit.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppSplit\obj\Debug\ConsoleAppSplit.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppSplit\obj\Debug\ConsoleAppSplit.exe
+C:\Users\Utente\source\repos\ConsoleAppRipassoVerificaMatriciFile\ConsoleAppSplit\obj\Debug\ConsoleAppSplit.pdb

@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensare\bin\Debug\ConsoleAppPensare.exe.config
+C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensare\bin\Debug\ConsoleAppPensare.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensare\bin\Debug\ConsoleAppPensare.pdb
+C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensare\obj\Debug\ConsoleAppPensare.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensare\obj\Debug\ConsoleAppPensare.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensare\obj\Debug\ConsoleAppPensare.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensare\obj\Debug\ConsoleAppPensare.pdb

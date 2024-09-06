@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppValidaData\bin\Debug\ConsoleAppValidaData.exe.config
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppValidaData\bin\Debug\ConsoleAppValidaData.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppValidaData\bin\Debug\ConsoleAppValidaData.pdb
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppValidaData\obj\Debug\ConsoleAppValidaData.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppValidaData\obj\Debug\ConsoleAppValidaData.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppValidaData\obj\Debug\ConsoleAppValidaData.exe
+C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppValidaData\obj\Debug\ConsoleAppValidaData.pdb
