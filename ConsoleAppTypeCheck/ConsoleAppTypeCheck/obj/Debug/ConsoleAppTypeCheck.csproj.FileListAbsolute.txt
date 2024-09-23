@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppTypeCheck\ConsoleAppTypeCheck\bin\Debug\ConsoleAppTypeCheck.exe.config
-C:\Users\Utente\source\repos\ConsoleAppTypeCheck\ConsoleAppTypeCheck\bin\Debug\ConsoleAppTypeCheck.exe
-C:\Users\Utente\source\repos\ConsoleAppTypeCheck\ConsoleAppTypeCheck\bin\Debug\ConsoleAppTypeCheck.pdb
-C:\Users\Utente\source\repos\ConsoleAppTypeCheck\ConsoleAppTypeCheck\obj\Debug\ConsoleAppTypeCheck.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppTypeCheck\ConsoleAppTypeCheck\obj\Debug\ConsoleAppTypeCheck.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppTypeCheck\ConsoleAppTypeCheck\obj\Debug\ConsoleAppTypeCheck.exe
-C:\Users\Utente\source\repos\ConsoleAppTypeCheck\ConsoleAppTypeCheck\obj\Debug\ConsoleAppTypeCheck.pdb

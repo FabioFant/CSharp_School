@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppSottoStringa\bin\Debug\ConsoleAppSottoStringa.exe.config
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppSottoStringa\bin\Debug\ConsoleAppSottoStringa.exe
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppSottoStringa\bin\Debug\ConsoleAppSottoStringa.pdb
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppSottoStringa\obj\Debug\ConsoleAppSottoStringa.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppSottoStringa\obj\Debug\ConsoleAppSottoStringa.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppSottoStringa\obj\Debug\ConsoleAppSottoStringa.exe
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppSottoStringa\obj\Debug\ConsoleAppSottoStringa.pdb

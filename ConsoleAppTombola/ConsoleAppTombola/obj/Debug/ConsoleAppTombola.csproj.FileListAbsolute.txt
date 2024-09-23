@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppTombola\ConsoleAppTombola\bin\Debug\ConsoleAppTombola.exe.config
-C:\Users\Utente\source\repos\ConsoleAppTombola\ConsoleAppTombola\bin\Debug\ConsoleAppTombola.exe
-C:\Users\Utente\source\repos\ConsoleAppTombola\ConsoleAppTombola\bin\Debug\ConsoleAppTombola.pdb
-C:\Users\Utente\source\repos\ConsoleAppTombola\ConsoleAppTombola\obj\Debug\ConsoleAppTombola.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppTombola\ConsoleAppTombola\obj\Debug\ConsoleAppTombola.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppTombola\ConsoleAppTombola\obj\Debug\ConsoleAppTombola.exe
-C:\Users\Utente\source\repos\ConsoleAppTombola\ConsoleAppTombola\obj\Debug\ConsoleAppTombola.pdb

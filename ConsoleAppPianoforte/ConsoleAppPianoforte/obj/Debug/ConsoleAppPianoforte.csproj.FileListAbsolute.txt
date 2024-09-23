@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforte\bin\Debug\ConsoleAppPianoforte.exe.config
-C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforte\bin\Debug\ConsoleAppPianoforte.exe
-C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforte\bin\Debug\ConsoleAppPianoforte.pdb
-C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforte\obj\Debug\ConsoleAppPianoforte.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforte\obj\Debug\ConsoleAppPianoforte.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforte\obj\Debug\ConsoleAppPianoforte.exe
-C:\Users\Utente\source\repos\ConsoleAppPianoforte\ConsoleAppPianoforte\obj\Debug\ConsoleAppPianoforte.pdb

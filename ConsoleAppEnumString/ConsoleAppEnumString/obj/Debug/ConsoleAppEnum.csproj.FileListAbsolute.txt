@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppEnumString\bin\Debug\ConsoleAppEnumString.exe.config
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppEnumString\bin\Debug\ConsoleAppEnumString.exe
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppEnumString\bin\Debug\ConsoleAppEnumString.pdb
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppEnumString\obj\Debug\ConsoleAppEnum.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppEnumString\obj\Debug\ConsoleAppEnum.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppEnumString\obj\Debug\ConsoleAppEnumString.exe
-C:\Users\Utente\source\repos\ConsoleAppEnumString\ConsoleAppEnumString\obj\Debug\ConsoleAppEnumString.pdb

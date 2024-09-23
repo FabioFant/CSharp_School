@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppStampa####\bin\Debug\ConsoleAppStampa####.exe.config
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppStampa####\bin\Debug\ConsoleAppStampa####.exe
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppStampa####\bin\Debug\ConsoleAppStampa####.pdb
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppStampa####\obj\Debug\ConsoleAppStampa####.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppStampa####\obj\Debug\ConsoleAppStampa####.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppStampa####\obj\Debug\ConsoleAppStampa####.exe
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppStampa####\obj\Debug\ConsoleAppStampa####.pdb

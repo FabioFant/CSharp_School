@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppStampaCifraSetteSegmenti\ConsoleAppContoRovesciaGlobali\bin\Debug\ConsoleAppContoRovesciaGlobali.exe.config
-C:\Users\Utente\source\repos\ConsoleAppStampaCifraSetteSegmenti\ConsoleAppContoRovesciaGlobali\bin\Debug\ConsoleAppContoRovesciaGlobali.exe
-C:\Users\Utente\source\repos\ConsoleAppStampaCifraSetteSegmenti\ConsoleAppContoRovesciaGlobali\bin\Debug\ConsoleAppContoRovesciaGlobali.pdb
-C:\Users\Utente\source\repos\ConsoleAppStampaCifraSetteSegmenti\ConsoleAppContoRovesciaGlobali\obj\Debug\ConsoleAppContoRovesciaGlobali.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppStampaCifraSetteSegmenti\ConsoleAppContoRovesciaGlobali\obj\Debug\ConsoleAppContoRovesciaGlobali.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppStampaCifraSetteSegmenti\ConsoleAppContoRovesciaGlobali\obj\Debug\ConsoleAppContoRovesciaGlobali.exe
-C:\Users\Utente\source\repos\ConsoleAppStampaCifraSetteSegmenti\ConsoleAppContoRovesciaGlobali\obj\Debug\ConsoleAppContoRovesciaGlobali.pdb

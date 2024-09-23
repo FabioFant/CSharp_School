@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppPreVerificaVettori\ConsoleAppPreVerificaVettori\obj\Debug\ConsoleAppPreVerificaVettori.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppPreVerificaVettori\ConsoleAppPreVerificaVettori\obj\Debug\ConsoleAppPreVerificaVettori.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppPreVerificaVettori\ConsoleAppPreVerificaVettori\bin\Debug\ConsoleAppPreVerificaVettori.exe.config
-C:\Users\Utente\source\repos\ConsoleAppPreVerificaVettori\ConsoleAppPreVerificaVettori\bin\Debug\ConsoleAppPreVerificaVettori.exe
-C:\Users\Utente\source\repos\ConsoleAppPreVerificaVettori\ConsoleAppPreVerificaVettori\bin\Debug\ConsoleAppPreVerificaVettori.pdb
-C:\Users\Utente\source\repos\ConsoleAppPreVerificaVettori\ConsoleAppPreVerificaVettori\obj\Debug\ConsoleAppPreVerificaVettori.exe
-C:\Users\Utente\source\repos\ConsoleAppPreVerificaVettori\ConsoleAppPreVerificaVettori\obj\Debug\ConsoleAppPreVerificaVettori.pdb
