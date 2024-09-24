@@ -25,7 +25,8 @@ namespace ConsoleAppMemoAlunni
                         Console.WriteLine($"ERRORE : Non sono presenti un totale di 6 dati nel {numeroAlunno}° alunno.");
                         continue;
                     }
-                    if (dati[2] != "F" && dati[2] != "M")
+                    char genere;
+                    if (!char.TryParse(dati[2], out genere) || (genere != 'F' && genere != 'M'))
                     {
                         Console.WriteLine($"ERRORE : Genere non valido per il {numeroAlunno}° alunno.");
                         continue;
@@ -38,7 +39,7 @@ namespace ConsoleAppMemoAlunni
                     }
 
                     // Creazione e aggiunta alunno
-                    alunni.Add(new Alunno(dati[0], dati[1], dati[2], dataDiNascita, dati[4], dati[5]));
+                    alunni.Add(new Alunno(dati[0], dati[1], genere, dataDiNascita, dati[4], dati[5]));
                 }
             }
         }
