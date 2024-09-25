@@ -46,7 +46,7 @@ namespace ConsoleAppMemoAlunni
 
         static void Main(string[] args)
         {
-            Console.Title = "Memo Alunni by Fabio Fantini 4H 2024-09-20";
+            Console.WriteLine("Fabio Fantini 4H 2024-09-20");
 
             // Lettura input
             LeggiAlunni();
@@ -55,11 +55,9 @@ namespace ConsoleAppMemoAlunni
             // Stampa dati salvati
             foreach(Alunno alunno in alunni)
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", 
-                    alunno.GetNome(),   alunno.GetCognome(),
-                    alunno.GetGenere(), alunno.GetDataDiNascita(),
-                    alunno.GetClasse(), alunno.GetIndirizzo());
-
-
+                    alunno.Nome,   alunno.Cognome,
+                    alunno.Genere, alunno.DataDiNascita,
+                    alunno.Classe, alunno.Indirizzo);
         }
     }
 }

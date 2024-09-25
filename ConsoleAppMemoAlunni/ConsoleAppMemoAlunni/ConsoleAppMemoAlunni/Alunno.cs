@@ -11,27 +11,27 @@ namespace ConsoleAppMemoAlunni
 {
     internal class Alunno
     {
-        private string   nome;
-        private string   cognome;
-        private char     genere;
-        private DateOnly dataDiNascita;
-        private string   classe;
-        private string   indirizzo;
+        private string   _nome;
+        private string   _cognome;
+        private char     _genere;
+        private DateOnly _dataDiNascita;
+        private string   _classe;
+        private string   _indirizzo;
 
         public Alunno(string nome, string cognome, char genere, DateOnly dataDiNascita, string classe, string indirizzo)
         {
-            this.nome = nome;
-            this.cognome = cognome;
-            this.genere = genere;
-            this.dataDiNascita = dataDiNascita;
-            this.classe = classe;
-            this.indirizzo = indirizzo;
+            Nome = nome;
+            Cognome = cognome;
+            Genere = genere;
+            DataDiNascita = dataDiNascita;
+            Classe = classe;
+            Indirizzo= indirizzo;
         }
-        public string   GetNome()          { return nome; }
-        public string   GetCognome()       { return cognome; }
-        public char   GetGenere()          { return genere; }
-        public DateOnly GetDataDiNascita() { return dataDiNascita; }
-        public string   GetClasse()        { return classe; }
-        public string   GetIndirizzo()     { return indirizzo; }
+        public string Nome            { get { return _nome; }          private set { _nome = value; } }
+        public string Cognome         { get { return _cognome; }       private set { _cognome = value; } }
+        public char Genere            { get { return _genere; }        private set { _genere = value; } }
+        public DateOnly DataDiNascita { get { return _dataDiNascita; } private set { _dataDiNascita = value; } }
+        public string Classe          { get { return _classe; }        private set { _classe = value; } }
+        public string Indirizzo       { get { return _indirizzo; }     private set { _indirizzo = value; } }
     }
 }
