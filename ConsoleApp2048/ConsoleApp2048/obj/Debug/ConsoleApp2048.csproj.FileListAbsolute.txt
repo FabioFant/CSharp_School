@@ -5,3 +5,10 @@ C:\Users\Utente\source\repos\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2
 C:\Users\Utente\source\repos\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2048.csproj.CoreCompileInputs.cache
 C:\Users\Utente\source\repos\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2048.exe
 C:\Users\Utente\source\repos\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2048.pdb
+C:\Users\fabio.fantini\Documents\CSharp_School\ConsoleApp2048\ConsoleApp2048\bin\Debug\ConsoleApp2048.exe.config
+C:\Users\fabio.fantini\Documents\CSharp_School\ConsoleApp2048\ConsoleApp2048\bin\Debug\ConsoleApp2048.exe
+C:\Users\fabio.fantini\Documents\CSharp_School\ConsoleApp2048\ConsoleApp2048\bin\Debug\ConsoleApp2048.pdb
+C:\Users\fabio.fantini\Documents\CSharp_School\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2048.csproj.AssemblyReference.cache
+C:\Users\fabio.fantini\Documents\CSharp_School\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2048.csproj.CoreCompileInputs.cache
+C:\Users\fabio.fantini\Documents\CSharp_School\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2048.exe
+C:\Users\fabio.fantini\Documents\CSharp_School\ConsoleApp2048\ConsoleApp2048\obj\Debug\ConsoleApp2048.pdb

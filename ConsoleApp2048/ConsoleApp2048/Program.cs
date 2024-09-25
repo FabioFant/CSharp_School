@@ -17,7 +17,7 @@ namespace ConsoleApp2048
         static bool mosso = false; //Indica se con la mossa fatta qualcosa è effettivamente successo
         static int[,] tavola =
         { //La tabella contenente le celle
-            {0, 12, 0, 0},
+            {0, 0, 0, 0},
             {0, 0, 0, 0},
             {0, 0, 0, 0},
             {0, 0, 0, 0},
