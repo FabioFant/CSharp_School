@@ -1,15 +1,17 @@
 ﻿// Fabio Fantini 4H 2024-09-20
 // Memorizzazione di 200 Alunni con l'utilizzo di una classe
 
+using System.Runtime.InteropServices;
+
 namespace ConsoleAppMemoAlunni
 {
     internal class Program
     {
         const string        file_input = @"..\..\..\input.txt";
-        static List<Alunno> alunni = new List<Alunno>();
+        static List<Classe> istituto = new List<Classe>();
         static int          numeroAlunno = 0; // Usato per individuare l'alunno durante la lettura dell'input
 
-        static void LeggiAlunni()
+        static void LeggiClassiAlunni()
         {
             using (StreamReader sr = new StreamReader(file_input))
             {
@@ -19,14 +21,8 @@ namespace ConsoleAppMemoAlunni
                     string[] dati = sr.ReadLine().Split("\t");
                     numeroAlunno++;
 
-                    // Controlli input
-                    if (dati.Length != 6)
-                    {
-                        Console.WriteLine($"ERRORE : Non sono presenti un totale di 6 dati nel {numeroAlunno}° alunno.");
-                        continue;
-                    }
                     char genere;
-                    if (!char.TryParse(dati[2], out genere) || (genere != 'F' && genere != 'M'))
+                    if (!char.TryParse(dati[2], out genere))
                     {
                         Console.WriteLine($"ERRORE : Genere non valido per il {numeroAlunno}° alunno.");
                         continue;
@@ -37,9 +33,29 @@ namespace ConsoleAppMemoAlunni
                         Console.WriteLine($"ERRORE : Data di nascita non valida per il {numeroAlunno}° alunno.");
                         continue;
                     }
-
-                    // Creazione e aggiunta alunno
-                    alunni.Add(new Alunno(dati[0], dati[1], genere, dataDiNascita, dati[4], dati[5]));
+                    Indirizzo indirizzo;
+                    if (!Indirizzo.TryParse(dati[5], out indirizzo))
+                    {
+                        Console.WriteLine($"ERRORE : Indirizzo non valido per il {numeroAlunno}° alunno.");
+                        continue;
+                    }
+                    // Crea alunno e assegnalo ad una classe
+                    Alunno alunno = new Alunno(dati[0], dati[1], genere, dataDiNascita, dati[4], indirizzo);
+                    bool flag = false;
+                    foreach(Classe classe in istituto)
+                    {
+                        if(classe.GetClasse() == alunno.Classe)
+                        {
+                            classe.AggiungiAlunno(alunno);
+                            flag = true;
+                        }
+                    }
+                    // Se la classe non è stata trovata allora la creo e poi aggiungo l'alunno
+                    if (!flag)
+                    {
+                        istituto.Add(new Classe(alunno.Classe[0], alunno.Classe.Substring(1), alunno.Indirizzo));
+                        istituto[istituto.Count - 1].AggiungiAlunno(alunno);
+                    }
                 }
             }
         }
@@ -49,15 +65,18 @@ namespace ConsoleAppMemoAlunni
             Console.WriteLine("Fabio Fantini 4H 2024-09-20");
 
             // Lettura input
-            LeggiAlunni();
+            LeggiClassiAlunni();
             Console.WriteLine();
 
+
+            #if false
             // Stampa dati salvati
-            foreach(Alunno alunno in alunni)
+            foreach (Classe classe in istituto)
                 Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", 
-                    alunno.Nome,   alunno.Cognome,
+                    cla.Nome,   alunno.Cognome,
                     alunno.Genere, alunno.DataDiNascita,
                     alunno.Classe, alunno.Indirizzo);
+            #endif  
         }
     }
 }

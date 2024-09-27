@@ -11,14 +11,14 @@ namespace ConsoleAppMemoAlunni
 {
     internal class Alunno
     {
-        private string   _nome;
-        private string   _cognome;
-        private char     _genere;
-        private DateOnly _dataDiNascita;
-        private string   _classe;
-        private string   _indirizzo;
+        private string      _nome;
+        private string      _cognome;
+        private char        _genere;
+        private DateOnly    _dataDiNascita;
+        private string      _classe;
+        private Indirizzo   _indirizzo;
 
-        public Alunno(string nome, string cognome, char genere, DateOnly dataDiNascita, string classe, string indirizzo)
+        public Alunno(string nome, string cognome, char genere, DateOnly dataDiNascita, string classe, Indirizzo indirizzo)
         {
             Nome = nome;
             Cognome = cognome;
@@ -32,6 +32,6 @@ namespace ConsoleAppMemoAlunni
         public char Genere            { get { return _genere; }        private set { _genere = value; } }
         public DateOnly DataDiNascita { get { return _dataDiNascita; } private set { _dataDiNascita = value; } }
         public string Classe          { get { return _classe; }        private set { _classe = value; } }
-        public string Indirizzo       { get { return _indirizzo; }     private set { _indirizzo = value; } }
+        public Indirizzo Indirizzo    { get { return _indirizzo; }     private set { _indirizzo = value; } }
     }
 }
