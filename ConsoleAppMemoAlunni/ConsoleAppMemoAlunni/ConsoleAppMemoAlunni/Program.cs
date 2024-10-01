@@ -44,7 +44,7 @@ namespace ConsoleAppMemoAlunni
                     bool flag = false;
                     foreach(Classe classe in istituto)
                     {
-                        if(classe.GetClasse() == alunno.Classe)
+                        if(classe.NomeClasse == alunno.Classe)
                         {
                             classe.AggiungiAlunno(alunno);
                             flag = true;
@@ -53,6 +53,7 @@ namespace ConsoleAppMemoAlunni
                     // Se la classe non è stata trovata allora la creo e poi aggiungo l'alunno
                     if (!flag)
                     {
+                        Console.WriteLine(alunno.Classe[0] + alunno.Classe.Substring(1));
                         istituto.Add(new Classe(alunno.Classe[0], alunno.Classe.Substring(1), alunno.Indirizzo));
                         istituto[istituto.Count - 1].AggiungiAlunno(alunno);
                     }
@@ -68,14 +69,12 @@ namespace ConsoleAppMemoAlunni
             LeggiClassiAlunni();
             Console.WriteLine();
 
-
-            #if false
+#if true
             // Stampa dati salvati
             foreach (Classe classe in istituto)
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", 
-                    cla.Nome,   alunno.Cognome,
-                    alunno.Genere, alunno.DataDiNascita,
-                    alunno.Classe, alunno.Indirizzo);
+                Console.WriteLine("{0}\t{1}",
+                    classe.NomeClasse,
+                    classe.Indirizzo);
             #endif  
         }
     }

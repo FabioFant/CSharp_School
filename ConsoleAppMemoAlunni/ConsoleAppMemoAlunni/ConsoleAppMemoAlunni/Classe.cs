@@ -27,11 +27,8 @@ namespace ConsoleAppMemoAlunni
         public int Anno            { get { return _anno; }      private set { _anno = value; } }
         public string Sezione      { get { return _sezione; }   private set { _sezione = value; } }
         public Indirizzo Indirizzo { get { return _indirizzo; } private set { _indirizzo = value; } }
-
-        public string GetClasse()
-        {
-            return $"{Anno}{Sezione}";
-        }
+        public string NomeClasse   { get { return $"{Anno}{Sezione}"; } }
+        public string this [int indice] { get { return _alunni[indice].Cognome; } } // Indicizzatore
 
         public void AggiungiAlunno(Alunno alunno)
         {
