@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppMemoAlunni
 {
+    // Ricordarsi di cambiare i controlli delle classi se si modifica l'enum
     internal enum Indirizzo
     {
         Automazione,

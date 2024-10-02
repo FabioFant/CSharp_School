@@ -19,14 +19,14 @@ namespace ConsoleAppMemoAlunni
                 {
                     // Lettura riga e aggiornamento numero alunno
                     string[] dati = sr.ReadLine().Split("\t");
-                    numeroAlunno++;
-
-                    char genere;
-                    if (!char.TryParse(dati[2], out genere))
+                    if (dati.Length < 6)
                     {
-                        Console.WriteLine($"ERRORE : Genere non valido per il {numeroAlunno}° alunno.");
+                        Console.WriteLine($"ATTENZIONE : Rilevata riga mancante di dati dopo il {numeroAlunno}° alunno.");
                         continue;
                     }
+                    numeroAlunno++;
+
+                    // Conversione dell'input
                     DateOnly dataDiNascita;
                     if (!DateOnly.TryParse(dati[3], out dataDiNascita))
                     {
@@ -39,8 +39,9 @@ namespace ConsoleAppMemoAlunni
                         Console.WriteLine($"ERRORE : Indirizzo non valido per il {numeroAlunno}° alunno.");
                         continue;
                     }
+
                     // Crea alunno e assegnalo ad una classe
-                    Alunno alunno = new Alunno(dati[0], dati[1], genere, dataDiNascita, dati[4], indirizzo);
+                    Alunno alunno = new Alunno(dati[0], dati[1], dati[2][0], dataDiNascita, dati[4], indirizzo);
                     bool flag = false;
                     foreach(Classe classe in istituto)
                     {
@@ -53,8 +54,8 @@ namespace ConsoleAppMemoAlunni
                     // Se la classe non è stata trovata allora la creo e poi aggiungo l'alunno
                     if (!flag)
                     {
-                        Console.WriteLine(alunno.Classe[0] + alunno.Classe.Substring(1));
-                        istituto.Add(new Classe(alunno.Classe[0], alunno.Classe.Substring(1), alunno.Indirizzo));
+                        int anno = alunno.Classe[0] - 48;
+                        istituto.Add(new Classe(anno, alunno.Classe.Substring(1), alunno.Indirizzo));
                         istituto[istituto.Count - 1].AggiungiAlunno(alunno);
                     }
                 }
@@ -67,15 +68,29 @@ namespace ConsoleAppMemoAlunni
 
             // Lettura input
             LeggiClassiAlunni();
-            Console.WriteLine();
 
 #if true
-            // Stampa dati salvati
+            Console.WriteLine("\nCLASSI");
             foreach (Classe classe in istituto)
-                Console.WriteLine("{0}\t{1}",
-                    classe.NomeClasse,
-                    classe.Indirizzo);
-            #endif  
+            {
+                Console.WriteLine("{0}\t{1}"
+                       ,classe.NomeClasse, classe.Indirizzo);
+            }
+#endif
+
+#if true
+            Console.WriteLine("\nALUNNI");
+            // Stampa alunni
+            for (int i = 0; i < Alunno.NumeroDiMatricola; i++)
+                foreach (Classe classe in istituto)
+                {
+                    (string, string) info = classe[i];
+                    if (info != ("", ""))
+                        Console.WriteLine("{0}\t{1}\t{2}\t{3}"
+                            ,info.Item1, info.Item2, classe.NomeClasse, classe.Indirizzo);
+                }
+                    
+#endif  
         }
     }
 }
