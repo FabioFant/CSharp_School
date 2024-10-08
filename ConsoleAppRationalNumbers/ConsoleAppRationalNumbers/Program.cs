@@ -11,7 +11,7 @@ namespace RationalNumbers
     {
         public static int Euclid(int a, int b)
         {
-            //Debug.Assert(a > 0 && b > 0);
+            //Debug.Assert(b < a && b >= 0);
             while (b > 0)
             {
                 int r = a % b;
@@ -23,6 +23,7 @@ namespace RationalNumbers
 
         private int num, den;  // Dovrà sempre essere (den > 0)
 
+        // Costruttori
         public RationalNumber(int num, int den)
         {
             if (den == 0)
@@ -33,10 +34,9 @@ namespace RationalNumbers
 
             Normalize();
         }
-
-        // Costruttori
         public RationalNumber(int number) : this(number, 1) { }
         public RationalNumber() : this(0, 1) { }
+        public RationalNumber(RationalNumber r) : this(r.num, r.den) { }
 
         private void Normalize()
         {
