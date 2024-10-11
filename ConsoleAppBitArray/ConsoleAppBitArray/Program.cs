@@ -41,10 +41,10 @@ namespace BitArrays
             int bit_index_in_uint = (int)(bit_index % BITS_PER_VALUE);
             int mask = (int)(1 << bit_index_in_uint);
             if (value) // SET: Se bisogna portare il bit a 1, OR
-                bits[bit_index_in_uint] |= (uint)mask; // Mask con 0 quasi ovunque
+                bits[uint_index] |= (uint)mask; // Mask con 0 quasi ovunque
 
             else      // RESET: Se bisogna portare il bit a 0, AND
-                bits[bit_index_in_uint] &= ~(uint)mask; // Mask con 1 quasi ovunque
+                bits[uint_index] &= ~(uint)mask; // Mask con 1 quasi ovunque
         }
         public void SetAllBits(bool value)  // imposta tutti i bit a true o false
         {
@@ -85,7 +85,7 @@ namespace BitArrays
 
         static void Main(string[] args)
         {
-            List<long> primes = EratosthenesSieve(100);
+            List<long> primes = EratosthenesSieve(64_000_000);
 
             foreach (long n in primes)
             {
