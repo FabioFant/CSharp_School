@@ -28,7 +28,7 @@ namespace LinkedList
             get 
             {
                 if (head == null)
-                    return -1;
+                    return 0;
                 else
                 { // Se esiste un head, conto i nodi
                     int count = 1;
@@ -55,6 +55,9 @@ namespace LinkedList
                 if (head == null)
                     throw new NullReferenceException();
 
+                else if(idx == 0)
+                    return head.value;
+
                 // Scorri i nodi e prendo il valore
                 else
                 {
@@ -63,17 +66,17 @@ namespace LinkedList
 
                     while (curr.next != null)
                     {
-                        if (pos == idx)
-                            return curr.value;
-
                         curr = curr.next;
                         pos++;
+
+                        if (pos == idx)
+                            return curr.value;
                     }
                     
                     throw new IndexOutOfRangeException();
                 }
-            } 
-            set 
+            }
+            set
             {
                 if (idx < 0)
                     throw new IndexOutOfRangeException();
@@ -82,7 +85,13 @@ namespace LinkedList
                 if (head == null)
                     throw new NullReferenceException();
 
-                // Scorro i nodi e metto il valore
+                else if (idx == 0)
+                {
+                    head.value = value;
+                    return;
+                }
+
+                // Scorri i nodi e prendo il valore
                 else
                 {
                     int pos = 0;
@@ -90,16 +99,19 @@ namespace LinkedList
 
                     while (curr.next != null)
                     {
-                        if (pos == idx)
-                            curr.value = value;
-
                         curr = curr.next;
                         pos++;
+
+                        if (pos == idx)
+                        {
+                            curr.value = value;
+                            return;
+                        }
                     }
 
                     throw new IndexOutOfRangeException();
                 }
-            } 
+            }
         }
 
         public void Add(int value)
@@ -131,18 +143,25 @@ namespace LinkedList
             if (head == null)
                 throw new NullReferenceException();
 
-            // Scorri i nodi e prendo il valore
+            // Se [0], head diventa [1]
+            else if (idx == 0)
+                head = head.next;
+
+            // Scorri i nodi, il next del nodo idx-1 = idx+1
             else
             {
-                int pos = 0;
+                int posCurr = 0;
                 Node curr = head;
                 Node prev = null;
 
-                //TODO
-
                 while (curr.next != null)
                 {
+                    posCurr++;
+                    prev = curr;
+                    curr = curr.next;
 
+                    if (posCurr == idx)
+                        prev.next = curr.next;
                 }
 
                 throw new IndexOutOfRangeException();
@@ -150,7 +169,31 @@ namespace LinkedList
         }
         public void RemoveValue(int value)
         {
-            // TODO
+            // Nessun nodo
+            if (head == null)
+                throw new NullReferenceException();
+
+            // Se [0], head diventa [1]
+            else if (value == head.value)
+                head = head.next;
+
+            // Scorri i nodi, trovato il primo valore: next del nodo idx-1 = idx+1
+            else
+            {
+                int posCurr = 0;
+                Node curr = head;
+                Node prev = null;
+
+                while (curr.next != null)
+                {
+                    posCurr++;
+                    prev = curr;
+                    curr = curr.next;
+
+                    if (curr.value == value)
+                        prev.next = curr.next;
+                }
+            }
         }
         public int Search(int value)
         {
@@ -255,6 +298,37 @@ namespace LinkedList
     {
         static void Main(string[] args)
         {
+            LinkedList list = new LinkedList();
+
+            list.Add(0);
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+
+            Console.WriteLine("Get");
+            Console.WriteLine("Lista: {0} {1} {2} {3} {4} {5}\n", list[0], list[1], list[2], list[3], list[4], list[5]);
+
+            Console.WriteLine("Set ([1] = '1234')");
+            list[1] = 1234;
+            Console.WriteLine("Lista: {0} {1} {2} {3} {4} {5}\n", list[0], list[1], list[2], list[3], list[4], list[5]);
+
+            Console.WriteLine("Count: 6?");
+            Console.WriteLine("Count = {0}\n", list.Count);
+
+            Console.WriteLine("RemoveAt/Value\n");
+            list = null;
+            list = new LinkedList();
+            Console.WriteLine("Partenza: Count --> 1");
+            list.Add(5);
+            list.RemoveAt(0);
+            Console.WriteLine("RemoveAt Count: {0}", list.Count);
+            list.Add(5);
+            list.RemoveValue(5);
+            Console.WriteLine("RemoveAt Count: {0}\n", list.Count);
+
+            // TODO : finire controlli su RemoveAt/Value
         }
     }
 }
