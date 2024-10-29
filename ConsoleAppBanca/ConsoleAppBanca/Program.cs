@@ -1,109 +1,136 @@
-﻿namespace ConsoleAppBanca
+﻿// Fabio Fantini 4H 2024-10-29
+// Classe Banca contenente N istanze di Cliente e ogni cliente contiene N istanze di PrestitoSemplice
+// O PrestitoComposto, quest'ultimo eredita dalla superclasse PrestitoSemplice
+
+namespace ConsoleAppBanca
 {
     internal class Program
     {
+
         class Banca
         {
-            private class Cliente
-            {
-                private string _nome;
-                private string _cognome;
-                private string _codiceFiscale;
-                private double _stipendio;
-                private List<PrestitoSemplice> _prestiti;
-
-                public Cliente(string nome, string cognome, string codiceFiscale, double stipendio)
-                {
-
-                }
-
-                //public string StampaCliente() { }
-            }
-            private class PrestitoSemplice
-            {
-                private double _capitale;
-                private double _interesse;
-                private DateOnly _dataInizio;
-                private DateOnly _dataFine;
-                private string _codiceFiscale;
-                private double _rata;
-
-                public double Capitale { get { return _capitale; } private set { _capitale = value; } }
-                public double Interesse { get { return _interesse; } private set { _interesse = value; } }
-                public DateOnly DataInizio 
-                { 
-                    get { return _dataInizio; } 
-                    private set 
-                    { 
-                        _dataInizio = value; 
-
-                        if (_dataInizio.DayNumber > _dataFine.DayNumber) // swap se inizio > fine
-                        {
-                            DateOnly temp = _dataInizio;
-                            _dataInizio = _dataFine;
-                            _dataFine = temp;
-                        }
-                    }
-                }
-                public DateOnly DataFine
-                {
-                    get { return _dataFine; }
-                    private set
-                    {
-                        _dataFine = value;
-
-                        if (_dataInizio.DayNumber > _dataFine.DayNumber) // swap se inizio > fine
-                        {
-                            DateOnly temp = _dataInizio;
-                            _dataInizio = _dataFine;
-                            _dataFine = temp;
-                        }
-                    }
-                }
-                public string CodiceFiscale { get { return _codiceFiscale; } private set { _codiceFiscale = value; } }
-                public double Rata { get { return _rata; } private set { _rata = value; } }
-                public virtual double Montante { get { return Capitale * ( 1 + Durata * Interesse ); } }
-                public double Durata { get { return ( DataInizio.DayNumber - DataFine.DayNumber ) % 365; } }
-
-                public PrestitoSemplice(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale, double rata)
-                {
-                    Capitale = capitale;
-                    Interesse = interesse;
-                    DataInizio = dataInizio;
-                    DataFine = dataFine;
-                    CodiceFiscale = codiceFiscale;
-                    Rata = rata;
-                }
-
-                public string StampaPrestito()
-                {
-                    return $"Capitale: {Capitale}; Interesse: {Interesse}; DataInzio: {DataInizio}; DataFine: {DataFine}; CodiceFiscale: {CodiceFiscale}, Rata: {Rata}.";
-                }
-            }
-            private class PrestitoComposto : PrestitoSemplice
-            {
-                public override double Montante { get { return Math.Pow(Capitale * (1 + Interesse), Durata); } }
-
-                public PrestitoComposto(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale, double rata)
-                    : base(capitale, interesse, dataInizio, dataFine, codiceFiscale, rata) { }
-            }
-
+            // La banca contiene N clienti
             private List<Cliente> _clienti;
             public Banca()
             {
 
             }
 
-            //public void AddCliente(Cliente cliente);
-            //public void RemoveCliente(Cliente cliente);
-            //public Cliente SearchCliente(Cliente cliente);
+            // Uso i metodi di List per organizzare i clienti
+            public void AddCliente(Cliente cliente) { _clienti.Add(cliente); }
+            public void RemoveCliente(Cliente cliente) { _clienti.Remove(cliente); }
+            //public Cliente SearchCliente(string codiceFiscale);
             //public void AddPrestito(PrestitoSemplice cliente);
-           // public List<PrestitoSemplice> SearchPrestiti(string codiceFiscale);
+            //public List<PrestitoSemplice> SearchPrestiti(string codiceFiscale);
             //public double TotalePrestiti(string codiceFiscale);
+        }
+        class Cliente
+        {
+            // Dati privati
+            private string _nome;
+            private string _cognome;
+            private string _codiceFiscale;
+            private double _stipendio;
+            private List<PrestitoSemplice> _prestiti;
+
+            // Proprietà con solo get pubblico
+            public string Nome { get { return _nome; } private set { _nome = value; } }
+            public string Cognome { get { return _cognome; } private set { _cognome = value; } }
+            public string CodiceFiscale { get { return _codiceFiscale; } private set { _codiceFiscale = value; } }
+            public double Stipendio { get { return _stipendio; } private set { _stipendio = value; } }
+
+            // Costruttore
+            public Cliente(string nome, string cognome, string codiceFiscale, double stipendio)
+            {
+                _nome = nome;
+                _cognome = cognome;
+                _codiceFiscale = codiceFiscale;
+                _stipendio = stipendio;
+            }
+
+            // Stampa i dati
+            public string StampaCliente() 
+            {
+                return $"{Nome} {Cognome} {CodiceFiscale} {Stipendio}";
+            }
+        }
+        class PrestitoSemplice
+        {
+            // Dati privati
+            private double _capitale;
+            private double _interesse;
+            private DateOnly _dataInizio;
+            private DateOnly _dataFine;
+            private string _codiceFiscale;
+
+            // Proprietà con solo get pubblico
+            public double Capitale { get { return _capitale; } private set { _capitale = value; } }
+            public double Interesse { get { return _interesse; } private set { _interesse = value; } }
+            public DateOnly DataInizio
+            {
+                get { return _dataInizio; }
+                private set
+                {
+                    _dataInizio = value;
+
+                    if (_dataInizio.DayNumber > _dataFine.DayNumber) // swap se inizio > fine
+                    {
+                        DateOnly temp = _dataInizio;
+                        _dataInizio = _dataFine;
+                        _dataFine = temp;
+                    }
+                }
+            }
+            public DateOnly DataFine
+            {
+                get { return _dataFine; }
+                private set
+                {
+                    _dataFine = value;
+
+                    if (_dataInizio.DayNumber > _dataFine.DayNumber) // swap se inizio > fine
+                    {
+                        DateOnly temp = _dataInizio;
+                        _dataInizio = _dataFine;
+                        _dataFine = temp;
+                    }
+                }
+            }
+            public string CodiceFiscale { get { return _codiceFiscale; } private set { _codiceFiscale = value; } }
+
+            // Proprietà calcolate con solo get
+            public double Rata { get { return (Montante / Durata) / 12; } }
+            public virtual double Montante { get { return Capitale * (1 + Durata * Interesse); } }
+            public double Durata { get { return (DataInizio.DayNumber - DataFine.DayNumber) % 365; } }
+
+            // Costruttore
+            public PrestitoSemplice(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale)
+            {
+                Capitale = capitale;
+                Interesse = interesse;
+                DataInizio = dataInizio;
+                DataFine = dataFine;
+                CodiceFiscale = codiceFiscale;
+            }
+
+            // Stampa dei dati del prestito
+            public string StampaPrestito()
+            {
+                return $"Capitale: {Capitale}; Interesse: {Interesse}; DataInzio: {DataInizio}; DataFine: {DataFine}; CodiceFiscale: {CodiceFiscale}, Rata: {Rata}.";
+            }
+        }
+        class PrestitoComposto : PrestitoSemplice // Prestito Composto eredita da PrestitoSemplice
+        {
+            // Montante viene sovrascritto dalla nuova formula, il resto rimane invariato
+            public override double Montante { get { return Math.Pow(Capitale * (1 + Interesse), Durata); } }
+
+            // Il costruttore chiama quello del PrestitoSemplice tramite 'base'
+            public PrestitoComposto(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale)
+                : base(capitale, interesse, dataInizio, dataFine, codiceFiscale) { }
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Fabio Fantini 4H 2024-10-29");
         }
     }
 }
