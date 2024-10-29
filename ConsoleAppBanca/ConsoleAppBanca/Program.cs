@@ -13,16 +13,49 @@ namespace ConsoleAppBanca
             private List<Cliente> _clienti;
             public Banca()
             {
+                _clienti = new List<Cliente>();
+            }
 
+            // Indicizzatore, consegnando alla banca il codice fiscale, il cliente viene ritornato
+            public Cliente this[string codiceFiscale] 
+            {
+                get 
+                { 
+                    for (int i = 0; i < _clienti.Count; i++)
+                        if (_clienti[i].CodiceFiscale == codiceFiscale)
+                            return _clienti[i];
+
+                    return new Cliente("", "", "", 0.0);
+                }
             }
 
             // Uso i metodi di List per organizzare i clienti
             public void AddCliente(Cliente cliente) { _clienti.Add(cliente); }
             public void RemoveCliente(Cliente cliente) { _clienti.Remove(cliente); }
-            //public Cliente SearchCliente(string codiceFiscale);
-            //public void AddPrestito(PrestitoSemplice cliente);
-            //public List<PrestitoSemplice> SearchPrestiti(string codiceFiscale);
-            //public double TotalePrestiti(string codiceFiscale);
+
+            // Utilizzo l'indicizzatore per trovare il cliente
+            public Cliente SearchCliente(string codiceFiscale) { return this[codiceFiscale]; }
+            public void AddPrestito(PrestitoSemplice prestito)
+            {
+                // Aggiunge il prestito al cliente cercandolo con il codice fiscale
+                Cliente cliente = this[prestito.CodiceFiscale];
+                if (cliente.Nome != "" && cliente.Cognome != "" && cliente.CodiceFiscale != "" && cliente.Stipendio != 0.0)
+                    cliente.RichiediPrestito(prestito);
+                else
+                    throw new Exception("Cliente non trovato con il codice fiscale dato.");
+            }
+            public List<PrestitoSemplice> SearchPrestiti(string codiceFiscale)
+            {
+                // Ritorna tutti i prestiti di un cliente, cercandolo tramite il cod. fiscale
+                List<PrestitoSemplice> prestiti = new List<PrestitoSemplice>();
+                Cliente cliente = this[codiceFiscale];
+                for (int i = 0; i < cliente.NumeroPrestiti; i++)
+                    prestiti.Add(cliente[i]);
+
+                return prestiti;
+            }
+            // Utilizzo l'indicizzatore per trovare il cliente
+            public double TotalePrestiti(string codiceFiscale) { return this[codiceFiscale].NumeroPrestiti; }
         }
         class Cliente
         {
@@ -38,6 +71,10 @@ namespace ConsoleAppBanca
             public string Cognome { get { return _cognome; } private set { _cognome = value; } }
             public string CodiceFiscale { get { return _codiceFiscale; } private set { _codiceFiscale = value; } }
             public double Stipendio { get { return _stipendio; } private set { _stipendio = value; } }
+            public int NumeroPrestiti { get { return _prestiti.Count; } }
+
+            // Indicizzatore, ritorna il prestito consegnato l'indice all'instanza
+            public PrestitoSemplice this[int indice] { get { return _prestiti[indice]; } } 
 
             // Costruttore
             public Cliente(string nome, string cognome, string codiceFiscale, double stipendio)
@@ -46,12 +83,17 @@ namespace ConsoleAppBanca
                 _cognome = cognome;
                 _codiceFiscale = codiceFiscale;
                 _stipendio = stipendio;
+                _prestiti = new List<PrestitoSemplice>();
             }
 
             // Stampa i dati
-            public string StampaCliente() 
+            public string StampaCliente() { return $"{Nome} {Cognome} {CodiceFiscale} {Stipendio}"; }
+
+            // Aggiungi un prestito alla lista
+            public void RichiediPrestito(PrestitoSemplice prestito) 
             {
-                return $"{Nome} {Cognome} {CodiceFiscale} {Stipendio}";
+                if (prestito.CodiceFiscale != CodiceFiscale) throw new Exception("Codice fiscale non valido.");
+                _prestiti.Add(prestito); 
             }
         }
         class PrestitoSemplice
@@ -114,10 +156,7 @@ namespace ConsoleAppBanca
             }
 
             // Stampa dei dati del prestito
-            public string StampaPrestito()
-            {
-                return $"Capitale: {Capitale}; Interesse: {Interesse}; DataInzio: {DataInizio}; DataFine: {DataFine}; CodiceFiscale: {CodiceFiscale}, Rata: {Rata}.";
-            }
+            public string StampaPrestito() { return $"{Capitale} {Interesse} {DataInizio} {DataFine} {CodiceFiscale}"; }
         }
         class PrestitoComposto : PrestitoSemplice // Prestito Composto eredita da PrestitoSemplice
         {
