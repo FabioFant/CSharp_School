@@ -17,7 +17,7 @@ namespace ConsoleAppBanca
             }
 
             // Indicizzatore, consegnando alla banca il codice fiscale, il cliente viene ritornato
-            public Cliente this[string codiceFiscale] 
+            public Cliente? this[string codiceFiscale] 
             {
                 get 
                 { 
@@ -25,21 +25,30 @@ namespace ConsoleAppBanca
                         if (_clienti[i].CodiceFiscale == codiceFiscale)
                             return _clienti[i];
 
-                    return new Cliente("", "", "", 0.0);
+                    return null;
                 }
             }
 
             // Uso i metodi di List per organizzare i clienti
-            public void AddCliente(Cliente cliente) { _clienti.Add(cliente); }
+            public bool AddCliente(Cliente cliente) 
+            { 
+                // Se il cliente non è già presente, lo aggiunge
+                if(SearchCliente(cliente.CodiceFiscale) == null)
+                {
+                    _clienti.Add(cliente);
+                    return true;
+                }
+                return false;
+            }
             public void RemoveCliente(Cliente cliente) { _clienti.Remove(cliente); }
 
             // Utilizzo l'indicizzatore per trovare il cliente
-            public Cliente SearchCliente(string codiceFiscale) { return this[codiceFiscale]; }
+            public Cliente? SearchCliente(string codiceFiscale) { return this[codiceFiscale]; }
             public void AddPrestito(PrestitoSemplice prestito)
             {
                 // Aggiunge il prestito al cliente cercandolo con il codice fiscale
-                Cliente cliente = this[prestito.CodiceFiscale];
-                if (cliente.Nome != "" && cliente.Cognome != "" && cliente.CodiceFiscale != "" && cliente.Stipendio != 0.0)
+                Cliente? cliente = this[prestito.CodiceFiscale];
+                if (cliente != null)
                     cliente.RichiediPrestito(prestito);
                 else
                     throw new Exception("Cliente non trovato con il codice fiscale dato.");
@@ -48,14 +57,25 @@ namespace ConsoleAppBanca
             {
                 // Ritorna tutti i prestiti di un cliente, cercandolo tramite il cod. fiscale
                 List<PrestitoSemplice> prestiti = new List<PrestitoSemplice>();
-                Cliente cliente = this[codiceFiscale];
-                for (int i = 0; i < cliente.NumeroPrestiti; i++)
-                    prestiti.Add(cliente[i]);
+                Cliente? cliente = this[codiceFiscale];
+
+                if (cliente != null)
+                    for (int i = 0; i < cliente.NumeroPrestiti; i++)
+                        prestiti.Add(cliente[i]);
 
                 return prestiti;
             }
             // Utilizzo l'indicizzatore per trovare il cliente
-            public double TotalePrestiti(string codiceFiscale) { return this[codiceFiscale].NumeroPrestiti; }
+            public double TotalePrestiti(string codiceFiscale) 
+            {
+                Cliente? cliente = this[codiceFiscale];
+                double tot = 0.0;
+                if (cliente != null)
+                    for (int i = 0; i < cliente.NumeroPrestiti; i++)
+                        tot += cliente[i].Montante;
+
+                return tot;
+            }
         }
         class Cliente
         {
