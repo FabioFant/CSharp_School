@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppRipasso", "ConsoleAppRipasso\ConsoleAppRipasso.csproj", "{DA358535-A1B8-4BC0-9DE2-EDDB99D0149F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppVeicoli", "ConsoleAppVeicoli\ConsoleAppVeicoli.csproj", "{0BE2D709-7D63-4E8B-96AA-CA825880EB53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA358535-A1B8-4BC0-9DE2-EDDB99D0149F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA358535-A1B8-4BC0-9DE2-EDDB99D0149F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA358535-A1B8-4BC0-9DE2-EDDB99D0149F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA358535-A1B8-4BC0-9DE2-EDDB99D0149F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE2D709-7D63-4E8B-96AA-CA825880EB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE2D709-7D63-4E8B-96AA-CA825880EB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE2D709-7D63-4E8B-96AA-CA825880EB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE2D709-7D63-4E8B-96AA-CA825880EB53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4449A853-69C4-4C29-89F1-44A6547F9907}
+	EndGlobalSection
+EndGlobal
