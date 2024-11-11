@@ -12,10 +12,17 @@ namespace ConsoleAppThreadCorsa
 {
     internal class Program
     {
+        #region Variabili globali
         // Random e limiti del random
         static Random rnd = new Random();
-        const int VELOCITA_MIN = 20;
-        const int VELOCITA_MAX = 30;
+        const int VELOCITA_MIN = 40;
+        const int VELOCITA_MAX = 50;
+        const int MEDIA_VEL = VELOCITA_MIN + VELOCITA_MAX / 2;
+
+        // I thread
+        static Thread thAndrea;
+        static Thread thBaldo;
+        static Thread thCarlo;
 
         // Memo delle velocità di ogni persona
         static int velAndrea;
@@ -58,82 +65,145 @@ namespace ConsoleAppThreadCorsa
         static ConsoleColor colBaldo = ConsoleColor.Green;
         static ConsoleColor colCarlo = ConsoleColor.Blue;
 
+        //Input
+        static string comando;
+        #endregion
+
+        #region Metodi per Console e Input
+        static void Scrivi(int col, int rig, string mess, int sleep, ConsoleColor colore)
+        {
+            // Attesa
+            Thread.Sleep(sleep);
+            lock (_lock)
+            {
+                // Posizione cursore, colore e scrittura
+                SetCursorPosition(col, rig);
+                ForegroundColor = colore;
+                Write(mess);
+            }
+            // Colore di default
+            ForegroundColor = ConsoleColor.White;
+
+        }
+        static void Stato()
+        {
+            // Andrea
+            Scrivi(1, 2, "Andrea -> " + thAndrea.ThreadState + "               ", MEDIA_VEL, colAndrea);
+            Scrivi(50, 2, "Is alive = " + thAndrea.IsAlive + "               ", MEDIA_VEL, colAndrea);
+
+            // Baldo
+            Scrivi(1, 6, "Baldo -> " + thBaldo.ThreadState + "               ", MEDIA_VEL, colBaldo);
+            Scrivi(50, 6, "Is Alive = " + thBaldo.IsAlive + "               ", MEDIA_VEL, colBaldo);
+
+            // Carlo
+            Scrivi(1, 10, "Carlo -> " + thCarlo.ThreadState + "               ", MEDIA_VEL, colCarlo);
+            Scrivi(50, 10, "Is alive = " + thCarlo.IsAlive + "               ", MEDIA_VEL, colCarlo);
+        }
+        static void Menu(string titolo, int col)
+        {
+            Scrivi(col, 20, titolo + "                 ", 0, ConsoleColor.White);
+            Scrivi(col, 22, "Andrea (A)                ", 0, ConsoleColor.White);
+            Scrivi(col, 23, "Baldo (B)                 ", 0, ConsoleColor.White);
+            Scrivi(col, 24, "Carlo (C)                 ", 0, ConsoleColor.White);
+            Scrivi(col, 25, "                          ", 0, ConsoleColor.White);
+        }
+        static char MenuAzioni(string titolo, int col)
+        {
+            char c;
+            Scrivi(col, 20, titolo, 0, ConsoleColor.White);
+            Scrivi(col, 22, "Sospendere (S)  ", 0, ConsoleColor.White);
+            Scrivi(col, 23, "Riprendere (R)  ", 0, ConsoleColor.White);
+            Scrivi(col, 24, "Abort      (A)  ", 0, ConsoleColor.White);
+            //Scrivi(col, 25, "Aspetta    (J)  ", 0, ConsoleColor.White);
+            c = ReadKey(true).KeyChar;
+            return c = char.ToUpper(c);
+        }
+        static void AccettaComandi()
+        {
+            Thread thAzione;
+            comando = "";
+            char choice = ' ';
+
+            // Legge il comando utente
+            choice = ReadKey(true).KeyChar;
+            choice = char.ToUpper(choice);
+
+            // Memorizza il primo thread coinvolto nel comando
+            switch (choice)
+            {
+                case 'A':
+                    thAzione = thAndrea;
+                    break;
+                case 'B':
+                    thAzione = thBaldo;
+                    break;
+                case 'C':
+                    thAzione = thCarlo;
+                    break;
+                default:
+                    return;
+            }
+            comando += choice;
+
+            // Legge l'azione da intraprendere
+            choice = MenuAzioni("AZIONE SU " + thAzione.Name, 33);
+
+            //Compie l'azione richiesta
+            switch (choice)
+            {
+                case 'S':
+                    lock (_lock)
+                    {
+                        thAzione.Suspend();
+                    }
+                    break;
+                case 'R':
+                    thAzione.Resume();
+                    break;
+                case 'A':
+                    lock (_lock)
+                    {
+                        thAzione.Abort();
+                    }
+                    break;
+                default:
+                    return;
+            }
+        }
         static void Pronti()
         {
-            #region Andrea
-            ForegroundColor = colAndrea;
-            // Andrea     posizione in., colonna
-            SetCursorPosition(posAndrea, 2);
-            Write("Andrea");
-            SetCursorPosition(posAndrea, 3);
-            Write(andrea[0]);
-            SetCursorPosition(posAndrea, 4);
-            Write(andrea[1]); // @ per evitare problemi con \
-            SetCursorPosition(posAndrea, 5);
-            Write(andrea[2]);
-            #endregion
+            // Andrea
+            Scrivi(posAndrea, 3, andrea[0], 0, colAndrea);
+            Scrivi(posAndrea, 4, andrea[1], 0, colAndrea);
+            Scrivi(posAndrea, 5, andrea[2], 0, colAndrea);
 
-            #region Baldo
-            ForegroundColor = colBaldo;
-            // Baldo     posizione in., colonna
-            SetCursorPosition(posBaldo, 7);
-            Write("Baldo");
-            SetCursorPosition(posBaldo, 8);
-            Write(baldo[0]);
-            SetCursorPosition(posBaldo, 9);
-            Write(baldo[1]); // @ per evitare problemi con \
-            SetCursorPosition(posBaldo, 10);
-            Write(baldo[2]);
-            #endregion
+            // Baldo
+            Scrivi(posBaldo, 7, andrea[0], 0, colBaldo);
+            Scrivi(posBaldo, 8, andrea[1], 0, colBaldo);
+            Scrivi(posBaldo, 9, andrea[2], 0, colBaldo);
 
-            #region Carlo
-            ForegroundColor = colCarlo;
-            // Carlo     posizione in., colonna
-            SetCursorPosition(posCarlo, 12);
-            Write("Carlo");
-            SetCursorPosition(posCarlo, 13);
-            Write(carlo[0]);
-            SetCursorPosition(posCarlo, 14);
-            Write(carlo[1]); // @ per evitare problemi con \
-            SetCursorPosition(posCarlo, 15);
-            Write(carlo[2]);
-            #endregion
+            // Carlo
+            Scrivi(posCarlo, 11, carlo[0], 0, colCarlo);
+            Scrivi(posCarlo, 12, carlo[1], 0, colCarlo);
+            Scrivi(posCarlo, 13, carlo[2], 0, colCarlo);
         }
+        #endregion
+
+        #region Metodi per i Thread
         static void Andrea()
         {
             do
             { // Cambio di posizione con stampa rallentata da una piccola pausa fino ad arrivare al traguardo
                 posAndrea++;
-                Thread.Sleep(velAndrea);
-                lock(_lock)
-                {
-                    ForegroundColor = colAndrea;
-                    SetCursorPosition(posAndrea, 3);
-                    Write(andrea[0]);
-                }
-                Thread.Sleep(velAndrea);
-                lock (_lock)
-                {
-                    ForegroundColor = colAndrea;
-                    SetCursorPosition(posAndrea, 4);
-                    Write(andrea[1]);
-                }
-                Thread.Sleep(velAndrea);
-                lock (_lock)
-                {
-                    ForegroundColor = colAndrea;
-                    SetCursorPosition(posAndrea, 5);
-                    Write(andrea[2]);
-                }
-                Thread.Sleep(velAndrea);
+                Scrivi(posAndrea, 3, andrea[0], velAndrea, colAndrea);
+                Scrivi(posAndrea, 4, andrea[1], velAndrea, colAndrea);
+                Scrivi(posAndrea, 5, andrea[2], velAndrea, colAndrea);
 
             } while (posAndrea < 115);
             lock (_lock)
             {
                 classifica++;
-                ForegroundColor = ConsoleColor.White;
-                SetCursorPosition(115, 2);
-                Write(classifica);
+                Scrivi(posAndrea, 2, $"{classifica}", 0, ConsoleColor.White);
             }
         }
         static void Baldo()
@@ -141,76 +211,34 @@ namespace ConsoleAppThreadCorsa
             do // Cambio di posizione con stampa rallentata da una piccola pausa fino ad arrivare al traguardo
             {
                 posBaldo++;
-                Thread.Sleep(velBaldo);
-                lock (_lock)
-                {
-                    ForegroundColor = colBaldo;
-                    SetCursorPosition(posBaldo, 8);
-                    Write(baldo[0]);
-                }
-                Thread.Sleep(velBaldo);
-                lock (_lock)
-                {
-                    ForegroundColor = colBaldo;
-                    SetCursorPosition(posBaldo, 9);
-                    Write(baldo[1]);
-                }
-                Thread.Sleep(velBaldo);
-                lock (_lock)
-                {
-                    ForegroundColor = colBaldo;
-                    SetCursorPosition(posBaldo, 10);
-                    Write(baldo[2]);
-                }
-                Thread.Sleep(velBaldo);
+                Scrivi(posBaldo, 7, baldo[0], velBaldo, colBaldo);
+                Scrivi(posBaldo, 8, baldo[1], velBaldo, colBaldo);
+                Scrivi(posBaldo, 9, baldo[2], velBaldo, colBaldo);
 
             } while (posBaldo < 115);
             lock (_lock)
             {
                 classifica++;
-                ForegroundColor = ConsoleColor.White;
-                SetCursorPosition(115, 7);
-                Write(classifica);
+                Scrivi(posBaldo, 6, $"{classifica}", 0, ConsoleColor.White);
             }
         }
         static void Carlo()
         {
-
             do // Cambio di posizione con stampa rallentata da una piccola pausa fino ad arrivare al traguardo
             {
                 posCarlo++;
-                Thread.Sleep(velCarlo);
-                lock (_lock)
-                {
-                    ForegroundColor = colCarlo;
-                    SetCursorPosition(posCarlo, 13);
-                    Write(carlo[0]);
-                }
-                Thread.Sleep(velCarlo);
-                lock (_lock)
-                {
-                    ForegroundColor = colCarlo;
-                    SetCursorPosition(posCarlo, 14);
-                    Write(carlo[1]);
-                }
-                Thread.Sleep(velCarlo);
-                lock (_lock)
-                {
-                    ForegroundColor = colCarlo;
-                    SetCursorPosition(posCarlo, 15);
-                    Write(carlo[2]);
-                }
-                Thread.Sleep(velCarlo);
+                Scrivi(posCarlo, 11, carlo[0], velCarlo, colCarlo);
+                Scrivi(posCarlo, 12, carlo[1], velCarlo, colCarlo);
+                Scrivi(posCarlo, 13, carlo[2], velCarlo, colCarlo);
 
             } while (posCarlo < 115);
             lock (_lock)
             {
                 classifica++;
-                ForegroundColor = ConsoleColor.White;
-                SetCursorPosition(115, 12);
-                Write(classifica);
+                Scrivi(posCarlo, 10, $"{classifica}", 0, ConsoleColor.White);
             }
         }
+        #endregion
 
         static void Main(string[] args)
         {
@@ -218,17 +246,27 @@ namespace ConsoleAppThreadCorsa
             CursorVisible = false;
             WriteLine("Fabio Fantini 4H 2024-11-04");
 
-            Pronti(); // Visualizza la grafica di partenza (le 3 persone)
-
             // Determina le velocità
             velAndrea = rnd.Next(VELOCITA_MIN, VELOCITA_MAX);
             velBaldo = rnd.Next(VELOCITA_MIN, VELOCITA_MAX);
             velCarlo = rnd.Next(VELOCITA_MIN, VELOCITA_MAX);
 
-            // Creazione dei thread
-            Thread thAndrea = new Thread(Andrea);
-            Thread thBaldo = new Thread(Baldo);
-            Thread thCarlo = new Thread(Carlo);
+            // Creazione dei thread con nome
+            thAndrea = new Thread(Andrea);
+            thAndrea.Name = "Andrea";
+            thBaldo = new Thread(Baldo);
+            thBaldo.Name = "Baldo";
+            thCarlo = new Thread(Carlo);
+            thCarlo.Name = "Carlo";
+
+            // Visualizza la grafica di partenza
+            Pronti();
+            Stato();
+
+            Scrivi(27, 16, "Premi un tasto per iniziare!", 0, ConsoleColor.DarkYellow);
+            ReadKey(true);
+            Scrivi(27, 16, "Gara in corso...            ", 0, ConsoleColor.DarkYellow);
+            Menu("MENU'", 3);
 
             // Inizio di esecuzione dei thread, codice non bloccante
             // I thread vanno in conflitto perchè usano risorse comuni
@@ -237,7 +275,17 @@ namespace ConsoleAppThreadCorsa
             thCarlo.Start();
             thBaldo.Start();
 
-            ReadKey();
+            // Aggiornamento stato finchè i thread sono alive
+            do
+            {
+                Menu("MENU'", 3);
+                Stato();
+                if (KeyAvailable) AccettaComandi();
+            } while (thAndrea.IsAlive || thBaldo.IsAlive || thCarlo.IsAlive);
+            Stato();
+
+            Scrivi(27, 16, "Premi un tasto per uscire!", 0, ConsoleColor.DarkYellow);
+            ReadKey(true);
         }
     }
 }
