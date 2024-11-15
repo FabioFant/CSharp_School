@@ -1,4 +1,7 @@
-﻿namespace ConsoleAppDijkstra
+﻿// Fabio Fantini 4H 2024-11-15
+// Algoritmo di Dijkstra per testare le classi GrafoDiretto e GrafoNonDiretto
+
+namespace ConsoleAppDijkstra
 {
     internal class Program
     {
@@ -66,6 +69,8 @@
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Fabio Fantini 4H 2024-11-15");
+
             GrafoNonDiretto g = new GrafoNonDiretto();
 
             g.AggiungiNodo("A");  // 0

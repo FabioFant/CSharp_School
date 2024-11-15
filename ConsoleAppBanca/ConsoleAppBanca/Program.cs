@@ -2,6 +2,8 @@
 // Classe Banca contenente N istanze di Cliente e ogni cliente contiene N istanze di PrestitoSemplice
 // O PrestitoComposto, quest'ultimo eredita dalla superclasse PrestitoSemplice
 
+using System.Net.Http.Headers;
+
 namespace ConsoleAppBanca
 {
     internal class Program
@@ -105,9 +107,8 @@ namespace ConsoleAppBanca
                 _stipendio = stipendio;
                 _prestiti = new List<PrestitoSemplice>();
             }
-
             // Stampa i dati
-            public string StampaCliente() { return $"{Nome} {Cognome} {CodiceFiscale} {Stipendio}"; }
+            public string StampaCliente() { return $"Nome: {Nome}; Cognome: {Cognome}; Codicefiscale: {CodiceFiscale}; Stipendio: {Stipendio}."; }
 
             // Aggiungi un prestito alla lista
             public void RichiediPrestito(PrestitoSemplice prestito) 
@@ -135,12 +136,14 @@ namespace ConsoleAppBanca
                 {
                     _dataInizio = value;
 
+                    /*
                     if (_dataInizio.DayNumber > _dataFine.DayNumber) // swap se inizio > fine
                     {
                         DateOnly temp = _dataInizio;
                         _dataInizio = _dataFine;
                         _dataFine = temp;
                     }
+                    */
                 }
             }
             public DateOnly DataFine
@@ -150,12 +153,14 @@ namespace ConsoleAppBanca
                 {
                     _dataFine = value;
 
+                    /*
                     if (_dataInizio.DayNumber > _dataFine.DayNumber) // swap se inizio > fine
                     {
                         DateOnly temp = _dataInizio;
                         _dataInizio = _dataFine;
                         _dataFine = temp;
                     }
+                    */
                 }
             }
             public string CodiceFiscale { get { return _codiceFiscale; } private set { _codiceFiscale = value; } }
@@ -163,7 +168,7 @@ namespace ConsoleAppBanca
             // Proprietà calcolate con solo get
             public double Rata { get { return (Montante / Durata) / 12; } }
             public virtual double Montante { get { return Capitale * (1 + Durata * Interesse); } }
-            public double Durata { get { return (DataInizio.DayNumber - DataFine.DayNumber) % 365; } }
+            public double Durata { get { return (DataFine.DayNumber - DataInizio.DayNumber) / 365; } }
 
             // Costruttore
             public PrestitoSemplice(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale)
@@ -176,12 +181,15 @@ namespace ConsoleAppBanca
             }
 
             // Stampa dei dati del prestito
-            public string StampaPrestito() { return $"{Capitale} {Interesse} {DataInizio} {DataFine} {CodiceFiscale}"; }
+            public string StampaPrestito() { return $"Capitale: {Capitale}; Interesse: {Interesse};" +
+                    $" DataInizio: {DataInizio}; DataFine: {DataFine};" +
+                    $" Codicefiscale: {CodiceFiscale}; Rata: {Rata};" +
+                    $" Montante: {Montante}; Durata: {Durata}."; }
         }
         class PrestitoComposto : PrestitoSemplice // Prestito Composto eredita da PrestitoSemplice
         {
             // Montante viene sovrascritto dalla nuova formula, il resto rimane invariato
-            public override double Montante { get { return Math.Pow(Capitale * (1 + Interesse), Durata); } }
+            public override double Montante { get { return Capitale * Math.Pow((1 + Interesse), Durata); } }
 
             // Il costruttore chiama quello del PrestitoSemplice tramite 'base'
             public PrestitoComposto(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale)
@@ -190,6 +198,46 @@ namespace ConsoleAppBanca
         static void Main(string[] args)
         {
             Console.WriteLine("Fabio Fantini 4H 2024-10-29");
+
+            // Creazione di una banca
+            Banca banca = new Banca();
+
+            // Creazione di alcuni clienti
+            Cliente cliente1 = new Cliente("Mario", "Rossi", "RSSMRA80A01H501Z", 3000);
+            Cliente cliente2 = new Cliente("Luigi", "Verdi", "VRDLGU85B01H501Y", 2500);
+
+            // Aggiunta dei clienti alla banca
+            banca.AddCliente(cliente1);
+            banca.AddCliente(cliente2);
+
+            // Creazione di alcuni prestiti
+            PrestitoSemplice prestito1 = new PrestitoSemplice(10000, 0.05, new DateOnly(2023, 1, 1), new DateOnly(2025, 1, 1), "RSSMRA80A01H501Z");
+            PrestitoComposto prestito2 = new PrestitoComposto(20000, 0.04, new DateOnly(2023, 1, 1), new DateOnly(2026, 1, 1), "VRDLGU85B01H501Y");
+
+            // Aggiunta dei prestiti ai clienti
+            banca.AddPrestito(prestito1);
+            banca.AddPrestito(prestito2);
+
+            // Ricerca di un cliente e stampa delle informazioni
+            Cliente? clienteTrovato = banca.SearchCliente("RSSMRA80A01H501Z");
+            if (clienteTrovato != null)
+            {
+                Console.WriteLine(clienteTrovato.StampaCliente());
+            }
+
+            // Stampa del totale dei prestiti di un cliente
+            double totalePrestiti = banca.TotalePrestiti("RSSMRA80A01H501Z");
+            Console.WriteLine($"Totale prestiti per RSSMRA80A01H501Z: {totalePrestiti}");
+
+            // Stampa dei prestiti di un cliente
+            List<PrestitoSemplice>? prestitiCliente = banca.SearchPrestiti("VRDLGU85B01H501Y");
+            if (prestitiCliente != null)
+            {
+                foreach (var prestito in prestitiCliente)
+                {
+                    Console.WriteLine(prestito.StampaPrestito());
+                }
+            }
         }
     }
 }

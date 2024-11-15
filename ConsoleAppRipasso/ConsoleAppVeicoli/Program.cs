@@ -46,9 +46,14 @@
             for (int i = 0; i < veicoli.Count; i++)
                 if (veicoli[i] is IMotorizzato)
                 {
-                    IMotorizzato motorizzato = veicoli[i] as IMotorizzato;
+                    /*IMotorizzato motorizzato = veicoli[i] as IMotorizzato;
                     if (motorizzato != null)
                         motorizzato.AvviaMotore();
+                    */
+
+                    if (veicoli[i] is IMotorizzato motorizzato)
+                        motorizzato.AvviaMotore();
+                    
                 }
                 else if (veicoli[i] is Bicicletta)
                 {
