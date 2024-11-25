@@ -3,7 +3,7 @@
 
 // Librerie utilizzate
 using System;
-using System.Diagnostics;
+//using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using static System.Console;
@@ -66,7 +66,7 @@ namespace ConsoleAppThreadCorsa
         static ConsoleColor colCarlo = ConsoleColor.Blue;
 
         //Input
-        static string comando;
+        static string comando = "";
         #endregion
 
         #region Metodi per Console e Input
@@ -88,24 +88,24 @@ namespace ConsoleAppThreadCorsa
         static void Stato()
         {
             // Andrea
-            Scrivi(1, 2, "Andrea -> " + thAndrea.ThreadState + "               ", MEDIA_VEL, colAndrea);
-            Scrivi(50, 2, "Is alive = " + thAndrea.IsAlive + "               ", MEDIA_VEL, colAndrea);
+            Scrivi(1, 2, "Andrea -> " + thAndrea.ThreadState + "                      ", MEDIA_VEL, colAndrea);
+            Scrivi(50, 2, "Is alive = " + thAndrea.IsAlive + "                      ", MEDIA_VEL, colAndrea);
 
             // Baldo
-            Scrivi(1, 6, "Baldo -> " + thBaldo.ThreadState + "               ", MEDIA_VEL, colBaldo);
-            Scrivi(50, 6, "Is Alive = " + thBaldo.IsAlive + "               ", MEDIA_VEL, colBaldo);
+            Scrivi(1, 6, "Baldo -> " + thBaldo.ThreadState + "                      ", MEDIA_VEL, colBaldo);
+            Scrivi(50, 6, "Is Alive = " + thBaldo.IsAlive + "                      ", MEDIA_VEL, colBaldo);
 
             // Carlo
-            Scrivi(1, 10, "Carlo -> " + thCarlo.ThreadState + "               ", MEDIA_VEL, colCarlo);
-            Scrivi(50, 10, "Is alive = " + thCarlo.IsAlive + "               ", MEDIA_VEL, colCarlo);
+            Scrivi(1, 10, "Carlo -> " + thCarlo.ThreadState + "                      ", MEDIA_VEL, colCarlo);
+            Scrivi(50, 10, "Is alive = " + thCarlo.IsAlive + "                      ", MEDIA_VEL, colCarlo);
         }
         static void Menu(string titolo, int col)
         {
-            Scrivi(col, 20, titolo + "                 ", 0, ConsoleColor.White);
-            Scrivi(col, 22, "Andrea (A)                ", 0, ConsoleColor.White);
-            Scrivi(col, 23, "Baldo (B)                 ", 0, ConsoleColor.White);
-            Scrivi(col, 24, "Carlo (C)                 ", 0, ConsoleColor.White);
-            Scrivi(col, 25, "                          ", 0, ConsoleColor.White);
+            Scrivi(col, 20, titolo + "                                                                                          ", 0, ConsoleColor.White);
+            Scrivi(col, 22, "Andrea (A)                                                                                         ", 0, ConsoleColor.White);
+            Scrivi(col, 23, "Baldo (B)                                                                                          ", 0, ConsoleColor.White);
+            Scrivi(col, 24, "Carlo (C)                                                                                          ", 0, ConsoleColor.White);
+            Scrivi(col, 25, "                                                                                                   ", 0, ConsoleColor.White);
         }
         static char MenuAzioni(string titolo, int col)
         {
@@ -114,7 +114,7 @@ namespace ConsoleAppThreadCorsa
             Scrivi(col, 22, "Sospendere (S)  ", 0, ConsoleColor.White);
             Scrivi(col, 23, "Riprendere (R)  ", 0, ConsoleColor.White);
             Scrivi(col, 24, "Abort      (A)  ", 0, ConsoleColor.White);
-            //Scrivi(col, 25, "Aspetta    (J)  ", 0, ConsoleColor.White);
+            Scrivi(col, 25, "Aspetta    (J)  ", 0, ConsoleColor.White);
             c = ReadKey(true).KeyChar;
             return c = char.ToUpper(c);
         }
@@ -140,13 +140,14 @@ namespace ConsoleAppThreadCorsa
                 case 'C':
                     thAzione = thCarlo;
                     break;
+
                 default:
                     return;
             }
             comando += choice;
 
             // Legge l'azione da intraprendere
-            choice = MenuAzioni("AZIONE SU " + thAzione.Name, 33);
+            choice = MenuAzioni("AZIONE SU " + thAzione.Name + "     ", 33); // 33
 
             //Compie l'azione richiesta
             switch (choice)
@@ -154,18 +155,28 @@ namespace ConsoleAppThreadCorsa
                 case 'S':
                     lock (_lock)
                     {
-                        thAzione.Suspend();
+                        if(thAzione.ThreadState.Equals(ThreadState.Running) || thAzione.ThreadState.Equals(ThreadState.WaitSleepJoin))
+                            thAzione.Suspend();
                     }
                     break;
                 case 'R':
-                    thAzione.Resume();
+                    if(thAzione.ThreadState.Equals(ThreadState.Suspended))
+                        thAzione.Resume();
                     break;
                 case 'A':
                     lock (_lock)
                     {
-                        thAzione.Abort();
+                        if(thAzione.ThreadState.Equals(ThreadState.Running) || thAzione.ThreadState.Equals(ThreadState.WaitSleepJoin))
+                            thAzione.Abort();
                     }
                     break;
+                case 'J': // Termina e prepara il comando per i thread
+                    comando += choice;
+                    Menu("CHI ASPETTA " + thAzione.Name + " ?", 63); // 63
+                    choice = char.ToUpper(ReadKey(true).KeyChar);
+                    comando += choice;
+                    break;
+
                 default:
                     return;
             }
@@ -192,14 +203,32 @@ namespace ConsoleAppThreadCorsa
         #region Metodi per i Thread
         static void Andrea()
         {
+            int posAndrea = 0;
             do
-            { // Cambio di posizione con stampa rallentata da una piccola pausa fino ad arrivare al traguardo
+            { 
+                //Ritardo(1)
+                if (comando.Length == 3) // Processa ed esegue il comando
+                    if (comando[1] == 'J' && comando[0] == 'A') // non serve &&
+                        switch (comando[2])
+                        {
+                            case 'B':
+                                thBaldo.Join(); // Bloccante
+                                break;
+                            case 'C':
+                                thCarlo.Join();
+                                break;
+
+                            default:
+                                return;
+                        }
+                // Posizione successiva animazione
                 posAndrea++;
                 Scrivi(posAndrea, 3, andrea[0], velAndrea, colAndrea);
                 Scrivi(posAndrea, 4, andrea[1], velAndrea, colAndrea);
                 Scrivi(posAndrea, 5, andrea[2], velAndrea, colAndrea);
 
             } while (posAndrea < 115);
+            // Stampa della classifica alla fine
             lock (_lock)
             {
                 classifica++;
@@ -208,14 +237,32 @@ namespace ConsoleAppThreadCorsa
         }
         static void Baldo()
         {
-            do // Cambio di posizione con stampa rallentata da una piccola pausa fino ad arrivare al traguardo
+            int posBaldo = 0;
+            do
             {
+                //Ritardo(1)
+                if (comando.Length == 3) // Processa ed esegue il comando
+                    if (comando[1] == 'J' && comando[0] == 'B') // non serve &&
+                        switch (comando[2])
+                        {
+                            case 'A':
+                                thAndrea.Join(); // Bloccante
+                                break;
+                            case 'C':
+                                thCarlo.Join();
+                                break;
+
+                            default:
+                                return;
+                        }
+                // Posizione successiva animazione
                 posBaldo++;
                 Scrivi(posBaldo, 7, baldo[0], velBaldo, colBaldo);
                 Scrivi(posBaldo, 8, baldo[1], velBaldo, colBaldo);
                 Scrivi(posBaldo, 9, baldo[2], velBaldo, colBaldo);
 
             } while (posBaldo < 115);
+            // Stampa della classifica alla fine
             lock (_lock)
             {
                 classifica++;
@@ -224,8 +271,24 @@ namespace ConsoleAppThreadCorsa
         }
         static void Carlo()
         {
+            int posCarlo = 0;
             do // Cambio di posizione con stampa rallentata da una piccola pausa fino ad arrivare al traguardo
             {
+                //Ritardo(1)
+                if (comando.Length == 3) // Processa ed esegue il comando
+                    if (comando[1] == 'J' && comando[0] == 'C') // non serve &&
+                        switch (comando[2])
+                        {
+                            case 'A':
+                                thAndrea.Join(); // Bloccante
+                                break;
+                            case 'B':
+                                thBaldo.Join();
+                                break;
+
+                            default:
+                                return;
+                        }
                 posCarlo++;
                 Scrivi(posCarlo, 11, carlo[0], velCarlo, colCarlo);
                 Scrivi(posCarlo, 12, carlo[1], velCarlo, colCarlo);
