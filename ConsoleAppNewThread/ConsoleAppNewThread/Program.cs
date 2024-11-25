@@ -83,7 +83,6 @@ namespace ConsoleAppThreadCorsa
             }
             // Colore di default
             ForegroundColor = ConsoleColor.White;
-
         }
         static void Stato()
         {
