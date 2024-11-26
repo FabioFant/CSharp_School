@@ -10,11 +10,15 @@
 
   <ItemGroup>
     <None Remove="Immagini\background.png" />
+    <None Remove="Immagini\pesce.png" />
+    <None Remove="Immagini\pescepagliaccio.png" />
     <None Remove="Immagini\pescepalla.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Immagini\background.png" />
+    <Resource Include="Immagini\pesce.png" />
+    <Resource Include="Immagini\pescepagliaccio.png" />
     <Resource Include="Immagini\pescepalla.png" />
   </ItemGroup>
 

@@ -14,6 +14,9 @@
         </Canvas>
         <Label x:Name="txtContatore" Content="N.Tick: " HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Height="30" Width="80"/>
         <Label x:Name="txtMillSec" Content="Ms: " HorizontalAlignment="Left" Margin="105,17,0,0" VerticalAlignment="Top" Height="30" Width="80"/>
+        <Button x:Name="btnTranslate" Content="Traslazione" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Click="btnTranslate_Click" Height="44" Width="175"/>
+        <Button x:Name="btn_Rotate" Content="Rotate" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Click="btn_Rotate_Click" Width="175" Height="45"/>
+        <Button x:Name="btn_Scale" Content="Scale" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Click="btn_Scale_Click" Width="175" Height="45"/>
 
     </Grid>
 </Window>

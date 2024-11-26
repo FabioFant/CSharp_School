@@ -50,15 +50,41 @@ namespace WpfAppAcquario
         private void AggiungiOggetti()
         {
             Uri source; // Fornisce una rappresentazione in forma di oggetto
-            source = new Uri(@"/Immagini/pescepalla.png", UriKind.RelativeOrAbsolute);
+            source = new Uri(@"/Immagini/pesce.png", UriKind.RelativeOrAbsolute);
             BitmapImage bitmap = new BitmapImage(source); // Elemento bitmap
             immagine = new Image(); // Controllo per la visualizzazione di un'immagine
             immagine.Source = bitmap;
             immagine.Margin = new Thickness(300, 50, 0, 0);
-            immagine.Height = 50;
-            immagine.Width = 50;
+            //immagine.Height = 50;
+            immagine.Width = 200;
             immagine.RenderSize = new Size(50, 50);
             canvasAcquario.Children.Add(immagine);
+        }
+
+        int x = 0;
+        int y = 0;
+        double scalax = 1.0;
+        double scalay = 1.0;
+        int gradi = 0;
+        private void btnTranslate_Click(object sender, RoutedEventArgs e)
+        {
+            TranslateTransform translateTransform;
+            translateTransform = new TranslateTransform(--x, ++y);
+            immagine.RenderTransform = translateTransform;
+        }
+        private void btn_Rotate_Click(object sender, RoutedEventArgs e)
+        {
+            RotateTransform rotateTransform;
+            rotateTransform = new RotateTransform(++gradi, 100, 100);
+            immagine.RenderTransform = rotateTransform;
+        }
+        private void btn_Scale_Click(object sender, RoutedEventArgs e)
+        {
+            ScaleTransform scaleTransform;
+            scalax += .1;
+            scalay += .1;
+            scaleTransform = new ScaleTransform(--x, ++y);
+            immagine.RenderTransform = scaleTransform;
         }
     }
 }
