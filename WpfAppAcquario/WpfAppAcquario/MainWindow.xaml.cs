@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ProgettoCondiviso;
 
 namespace WpfAppAcquario
 {
@@ -50,13 +51,13 @@ namespace WpfAppAcquario
         private void AggiungiOggetti()
         {
             Uri source; // Fornisce una rappresentazione in forma di oggetto
-            source = new Uri(@"/Immagini/pesce.png", UriKind.RelativeOrAbsolute);
+            source = new Uri(@"/Immagini/cavalluccio.png", UriKind.RelativeOrAbsolute);
             BitmapImage bitmap = new BitmapImage(source); // Elemento bitmap
             immagine = new Image(); // Controllo per la visualizzazione di un'immagine
             immagine.Source = bitmap;
             immagine.Margin = new Thickness(300, 50, 0, 0);
-            //immagine.Height = 50;
-            immagine.Width = 200;
+            immagine.Height = 50;
+            immagine.Width = 50;
             immagine.RenderSize = new Size(50, 50);
             canvasAcquario.Children.Add(immagine);
         }
@@ -81,10 +82,32 @@ namespace WpfAppAcquario
         private void btn_Scale_Click(object sender, RoutedEventArgs e)
         {
             ScaleTransform scaleTransform;
-            scalax += .1;
-            scalay += .1;
-            scaleTransform = new ScaleTransform(--x, ++y);
+            scalax += 0.1;
+            scalay += 0.1;
+            scaleTransform = new ScaleTransform(scalax, scalay, 100, 100);
             immagine.RenderTransform = scaleTransform;
+        }
+
+        private void btn_Transform_Click(object sender, RoutedEventArgs e)
+        {
+            TransformGroup transfromGroup = new TransformGroup();
+            ScaleTransform scaleTransform;
+            TranslateTransform translateTransform;
+            RotateTransform rotateTransform;
+
+            scaleTransform = new ScaleTransform(0.5, 0.5, immagine.Width / 2, immagine.Height / 2);
+            scaleTransform = new ScaleTransform(-0.5, -0.5);
+            scaleTransform = new ScaleTransform(scalax, scalay);
+
+            translateTransform = new TranslateTransform(++x, ++y);
+            rotateTransform = new RotateTransform(45, immagine.Width / 2, immagine.Height / 2);
+            rotateTransform = new RotateTransform(++gradi);
+
+            transfromGroup.Children.Add(scaleTransform);
+            transfromGroup.Children.Add(rotateTransform);
+            transfromGroup.Children.Add(translateTransform);
+
+            immagine.RenderTransform = transfromGroup;
         }
     }
 }
