@@ -35,6 +35,9 @@ namespace ConsoleAppTreni
 
         // Partenza 0, Arrivo 115
         static int posPedone = 0;
+        // Partenza 0, Arrivo 27
+        static int posTreno1 = 0;
+        static int posTreno2 = 0;
 
         // Personaggi
         static string[] pedone =
@@ -48,6 +51,7 @@ namespace ConsoleAppTreni
         static string comando = "";
         #endregion
 
+        #region Metodi per console
         static void Scrivi(int col, int rig, string mess, int sleep, ConsoleColor colore)
         {
             // Attesa
@@ -62,12 +66,26 @@ namespace ConsoleAppTreni
             // Colore di default
             ForegroundColor = ConsoleColor.White;
         }
+        static void Stato()
+        {
+            // Treno 1
+            Scrivi(37, 2, thTreno1.ThreadState + "                                                          ", PAUSA_TRENI, ConsoleColor.White);
+            Scrivi(37, 2, thTreno1.IsAlive + "                                                          ", PAUSA_TRENI, ConsoleColor.White);
+
+            // Treno 2
+            Scrivi(37, 2, thTreno2.ThreadState + "                                                          ", PAUSA_TRENI, ConsoleColor.White);
+            Scrivi(37, 2, thTreno2.IsAlive + "                                                          ", PAUSA_TRENI, ConsoleColor.White);
+
+            // Pedone
+            Scrivi(102, 25, thPedone.ThreadState + "                                                          ", PAUSA_PEDONE, ConsoleColor.White);
+            //Scrivi(102, 25, thPedone.IsAlive + "                                                          ", PAUSA_PEDONE, ConsoleColor.White);
+        }
         static void Interfaccia()
         {
             //          1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345
             WriteLine(@"                             |     |State treno 1                                             |     |State treno 2 "); // 1 
             WriteLine(@"                             |     |                                                          |     |              "); // 2
-            WriteLine(@"                             |     |Is alive =                                                |     |Is alive      "); // 3
+            WriteLine(@"                             |     |Is alive =                                                |     |Is alive =    "); // 3
             WriteLine(@"                             |     |                                                          |     |              "); // 4
             WriteLine(@"                             |     |                                                          |     |              "); // 5
             WriteLine(@"                             |     |                                                          |     |              "); // 6
@@ -88,11 +106,52 @@ namespace ConsoleAppTreni
             WriteLine(@"   (R) Resume pedone         |     |                                                          |     |              "); // 21
             WriteLine(@"   (A) Abort pedone          |     |                                                          |     |              "); // 22
             WriteLine(@"                             |     |                                                          |     |              "); // 23
-            WriteLine(@"                             |     |                                                          |     |  State pedone"); // 24
+            WriteLine(@"                             |     |                                                          |     |State pedone  "); // 24
             WriteLine(@"                             |     |                                                          |     |              "); // 25
             WriteLine(@"                             |     |                                                          |     |              "); // 26
             WriteLine(@"                             |     |                                                          |     |              "); // 27
         }
+        #endregion
+
+        #region Metodi per Thread
+        static void Pedone()
+        {
+            do
+            {
+                // Posizione successiva animazione
+                posPedone++;
+                Scrivi(posPedone, 10, pedone[0], PAUSA_PEDONE, ConsoleColor.White);
+                Scrivi(posPedone, 11, pedone[1], PAUSA_PEDONE, ConsoleColor.White);
+                Scrivi(posPedone, 12, pedone[2], PAUSA_PEDONE, ConsoleColor.White);
+
+            } while (posPedone < 115);
+        }
+        static void Treno1()
+        {
+            do
+            {
+                // Posizione successiva animazione
+                posTreno1++;
+                Scrivi(31, posTreno1, pedone[0], PAUSA_TRENI, ConsoleColor.White);
+                Scrivi(31, posTreno1, pedone[1], PAUSA_TRENI, ConsoleColor.White);
+                Scrivi(31, posTreno1, pedone[2], PAUSA_TRENI, ConsoleColor.White);
+
+            } while (posTreno1 < 27);
+        }
+        static void Treno2()
+        {
+            do
+            {
+                // Posizione successiva animazione
+                posTreno2++;
+                Scrivi(96, posTreno2, pedone[0], PAUSA_TRENI, ConsoleColor.White);
+                Scrivi(96, posTreno2, pedone[1], PAUSA_TRENI, ConsoleColor.White);
+                Scrivi(96, posTreno2, pedone[2], PAUSA_TRENI, ConsoleColor.White);
+
+            } while (posTreno2 < 27);
+        }
+        #endregion
+
         static void Main(string[] args)
         {
             OutputEncoding = Encoding.Unicode;
@@ -104,7 +163,17 @@ namespace ConsoleAppTreni
             pausaTransito1 = rnd.Next(MINIMO_INTERVALLO, MASSIMO_INTERVALLO);
             pausaTransito2 = rnd.Next(MINIMO_INTERVALLO, MASSIMO_INTERVALLO);
 
-            //TODO
+            thPedone = new Thread(Pedone);
+            thPedone.Name = "Pedone";
+            thPedone = new Thread(Treno1);
+            thPedone.Name = "Treno1";
+            thPedone = new Thread(Treno2);
+            thPedone.Name = "Treno2";
+
+            ReadKey(true);
+
+            thPedone.Start();
+            // TODO
 
             ReadKey(true);
         }
