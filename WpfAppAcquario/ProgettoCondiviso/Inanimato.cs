@@ -10,19 +10,22 @@ namespace ProgettoCondiviso
 {
     internal class Inanimato
     {
-        private Image _immagine;
+        public Image Immagine { get; private set; }
         public Inanimato(string immagine, Thickness posizione, int altezza, int lunghezza, Size grandezza)
         {
             Uri source; // Fornisce una rappresentazione in forma di oggetto
             source = new Uri(@$"pack://application:,,,/Immagini/{immagine}", UriKind.RelativeOrAbsolute);
             BitmapImage bitmap = new BitmapImage(source); // Elemento bitmap
-            _immagine = new Image(); // Controllo per la visualizzazione di un'immagine
-            _immagine.Source = bitmap;
-            _immagine.Margin = posizione;
-            _immagine.Height = altezza;
-            _immagine.Width = lunghezza;
-            _immagine.RenderSize = grandezza;
+            Immagine = new Image(); // Controllo per la visualizzazione di un'immagine
+            Immagine.Source = bitmap;
+            Immagine.Margin = posizione;
+            Immagine.Height = altezza;
+            Immagine.Width = lunghezza;
+            Immagine.RenderSize = grandezza;
             //canvasAcquario.Children.Add(immagine);
         }
+
+        public virtual void AggiungiImmagine(Canvas canvas) { canvas.Children.Add(Immagine); } // Aggiunge l'immagine al canvas
+            
     }
 }

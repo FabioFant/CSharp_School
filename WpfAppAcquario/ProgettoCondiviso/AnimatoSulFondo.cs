@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProgettoCondiviso
 {
-    internal class AnimatoSulFondo : AnimatoSulPosto
+    internal class AnimatoSulFondo// : AnimatoSulPosto
     {
     }
 }

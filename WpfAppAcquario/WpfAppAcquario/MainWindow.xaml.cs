@@ -27,10 +27,14 @@ namespace WpfAppAcquario
         public MainWindow()
         {
             InitializeComponent();
-            SetupTimer();
-            AggiungiOggetti();
+            //SetupTimer();
+            //AggiungiOggetti();
+
+            Inanimato pescepalla = new Inanimato("pescepalla.png", new Thickness(300, 50, 0, 0), 50, 50, new Size(50, 50));
+            pescepalla.AggiungiImmagine(canvasAcquario);
         }
 
+        #region Metodi di riferimento
         void SetupTimer()
         {
             txtMillSec.Content = $"Ms: {MILLISECONDI}";
@@ -109,5 +113,6 @@ namespace WpfAppAcquario
 
             immagine.RenderTransform = transfromGroup;
         }
+        #endregion
     }
 }
