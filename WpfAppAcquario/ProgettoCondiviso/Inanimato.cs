@@ -25,7 +25,7 @@ namespace ProgettoCondiviso
             //canvasAcquario.Children.Add(immagine);
         }
 
-        public virtual void AggiungiImmagine(Canvas canvas) { canvas.Children.Add(Immagine); } // Aggiunge l'immagine al canvas
+        public virtual void IniziaAnimazione(Canvas canvas) { canvas.Children.Add(Immagine); } // Aggiunge l'immagine al canvas
             
     }
 }

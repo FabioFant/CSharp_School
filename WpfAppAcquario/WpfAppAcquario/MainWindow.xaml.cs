@@ -21,20 +21,23 @@ namespace WpfAppAcquario
     /// </summary>
     public partial class MainWindow : Window
     {
-        const int MILLISECONDI = 300; // Numero di ms per fra un tick e l'altro
-        DispatcherTimer dispatcherTimer; // Motore per le animazioni
-
         public MainWindow()
         {
             InitializeComponent();
             //SetupTimer();
             //AggiungiOggetti();
 
-            Inanimato pescepalla = new Inanimato("pescepalla.png", new Thickness(300, 50, 0, 0), 50, 50, new Size(50, 50));
-            pescepalla.AggiungiImmagine(canvasAcquario);
+            Inanimato corallo = new Inanimato("corallo.png", new Thickness(500, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50));
+            AnimatoSulPosto alga = new AnimatoSulPosto("alga.png", new Thickness(200, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50), 500);
+            AnimatoSulFondo tartaruga = new AnimatoSulFondo("tartaruga.png", new Thickness(400, 0, 0, 0), new Thickness(500, 0, 0, 0), 50, 50, new Size(50, 50), 1500, 30);
+            corallo.IniziaAnimazione(canvasAcquario);
+            alga.IniziaAnimazione(canvasAcquario);
+            tartaruga.IniziaAnimazione(canvasAcquario);
         }
 
         #region Metodi di riferimento
+        const int MILLISECONDI = 300; // Numero di ms per fra un tick e l'altro
+        DispatcherTimer dispatcherTimer; // Motore per le animazioni
         void SetupTimer()
         {
             txtMillSec.Content = $"Ms: {MILLISECONDI}";
