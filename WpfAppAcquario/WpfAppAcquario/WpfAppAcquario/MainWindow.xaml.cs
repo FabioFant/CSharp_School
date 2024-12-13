@@ -29,7 +29,7 @@ namespace WpfAppAcquario
 
             Inanimato corallo = new Inanimato("corallo.png", new Thickness(500, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50));
             AnimatoSulPosto alga = new AnimatoSulPosto("alga.png", new Thickness(200, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50), 500);
-            AnimatoSulFondo tartaruga = new AnimatoSulFondo("tartaruga.png", new Thickness(400, 0, 0, 0), new Thickness(500, 0, 0, 0), 50, 50, new Size(50, 50), 1500, 30);
+            AnimatoSulFondo tartaruga = new AnimatoSulFondo("tartaruga.png", new Thickness(200, 0, 0, 0), new Thickness(500, 0, 0, 0), 50, 50, new Size(50, 50), 1500, 101);
             corallo.IniziaAnimazione(canvasAcquario);
             alga.IniziaAnimazione(canvasAcquario);
             tartaruga.IniziaAnimazione(canvasAcquario);

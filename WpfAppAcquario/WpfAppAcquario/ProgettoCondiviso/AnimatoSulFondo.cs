@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Diagnostics;
 
 namespace ProgettoCondiviso
 {
@@ -15,6 +16,7 @@ namespace ProgettoCondiviso
         private double currLeft = 0;
         private bool flag = true;
 
+        public double DistanzaRispettoZero {  get; private set; }
         public Thickness PosizioneIniziale { get; private set; }
         public Thickness PosizioneFinale { get; private set; }
         public int CambioPosizione { get; private set; }
@@ -22,7 +24,6 @@ namespace ProgettoCondiviso
         public AnimatoSulFondo(string immagine, Thickness posInizio, Thickness posFine, int altezza, int lunghezza, Size grandezza, int intervallo, int cambioPos)
             : base(immagine, posInizio, altezza, lunghezza, grandezza, intervallo) // Viene creata l'immagine
         {
-            transformGroup = new TransformGroup();
             translate = new TranslateTransform();
 
             // Se la fine si trova più a sinistra dell'inizio ==> swap
@@ -38,32 +39,49 @@ namespace ProgettoCondiviso
             PosizioneIniziale = posInizio;
             PosizioneFinale = posFine;
             CambioPosizione = cambioPos;
+            DistanzaRispettoZero = Immagine.Margin.Left;
         }
         private void TickAnimazione(object sender, EventArgs e) // Animazione per ogni tick
         {
-            // TODO : FIX : Non va il flip
+            Debug.WriteLine(DistanzaRispettoZero);
+
+            // TODO FIX flip
             // Cambio del lato se si superano i limiti
-            if(Immagine.Margin.Left <= PosizioneIniziale.Left)
+            if (DistanzaRispettoZero < PosizioneIniziale.Left)
             {
+                //Canvas.SetLeft(Immagine, PosizioneIniziale.Left);
                 flag = true;
-                flip.ScaleX *= -1;
+                flip.ScaleX = Math.Abs(flip.ScaleX);
+                translate.X = PosizioneIniziale.Left;
+                Debug.Write("Sinistra, ");
             }
-            else if(Immagine.Margin.Left >= PosizioneFinale.Left)
+            else if (DistanzaRispettoZero >= PosizioneFinale.Left)
             {
+                //Canvas.SetLeft(Immagine, PosizioneFinale.Left);
                 flag = false;
-                flip.ScaleX *= -1;
+                flip.ScaleX = -Math.Abs(flip.ScaleX);
+                translate.X = PosizioneFinale.Left;
+                Debug.Write("Destra, ");
+            }
+            // Cambio della posizione
+            if (flag)
+            {
+                DistanzaRispettoZero += CambioPosizione;
+                translate.X += CambioPosizione;
+                Debug.WriteLine("Avanti"); 
+            }
+            else
+            {
+                DistanzaRispettoZero -= CambioPosizione;
+                translate.X -= CambioPosizione;
+                Debug.WriteLine("Indietro");
             }
             
-            
-            // Cambio della posizione
-            if (flag) currLeft += CambioPosizione;
-            else currLeft -= CambioPosizione;
-            translate = new TranslateTransform(currLeft, 0);
-   
             // Aggiunta dei trasform alla immagine
+            transformGroup = new TransformGroup();
             transformGroup.Children.Add(translate);
             transformGroup.Children.Add(flip);
-            Immagine.RenderTransform = translate;
+            Immagine.RenderTransform = transformGroup;
         }
 
         public override void IniziaAnimazione(Canvas canvas) // Aggiunge l'immagine al canvas
