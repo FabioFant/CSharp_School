@@ -10,18 +10,10 @@
 
   <ItemGroup>
     <None Remove="Immagini\alga.png" />
-    <None Remove="Immagini\background.png" />
     <None Remove="Immagini\banco.png" />
     <None Remove="Immagini\cavalluccio.png" />
     <None Remove="Immagini\corallo.png" />
     <None Remove="Immagini\medusa.png" />
-    <None Remove="Immagini\pesce.png" />
-    <None Remove="Immagini\pesce1.png" />
-    <None Remove="Immagini\pesce2.png" />
-    <None Remove="Immagini\pesce3.png" />
-    <None Remove="Immagini\pesce4.png" />
-    <None Remove="Immagini\pesce5.png" />
-    <None Remove="Immagini\pescepagliaccio.png" />
     <None Remove="Immagini\pescepalla.png" />
     <None Remove="Immagini\sfondo.png" />
     <None Remove="Immagini\tartaruga.png" />
@@ -38,6 +30,6 @@
     <Resource Include="Immagini\tartaruga.png" />
   </ItemGroup>
 
-  <Import Project="..\ProgettoCondiviso\ProgettoCondiviso.projitems" Label="Shared" />
+  <Import Project="..\LibreriaClassi\LibreriaClassi.projitems" Label="Shared" />
 
 </Project>

@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibreriaClassi;
 using ProgettoCondiviso;
+using System.Windows.Interop;
 
 namespace WpfAppAcquario
 {
@@ -27,12 +29,32 @@ namespace WpfAppAcquario
             //SetupTimer();
             //AggiungiOggetti();
 
-            Inanimato corallo = new Inanimato("corallo.png", new Thickness(500, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50));
-            AnimatoSulPosto alga = new AnimatoSulPosto("alga.png", new Thickness(200, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50), 500);
-            AnimatoSulFondo tartaruga = new AnimatoSulFondo("tartaruga.png", new Thickness(200, 0, 0, 0), new Thickness(500, 0, 0, 0), 50, 50, new Size(50, 50), 100, 10);
+            Inanimato corallo = new Inanimato(CreaImmagine("corallo.png", new Thickness(500, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50)));
+            AnimatoSulPosto alga = new AnimatoSulPosto(CreaImmagine("alga.png", new Thickness(200, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50)), 500, false);
+            AnimatoSulFondo tartaruga = new AnimatoSulFondo(CreaImmagine("tartaruga.png", new Thickness(200, 0, 0, 0), 50, 50, new Size(50, 50)), 1500, 15, new Thickness(500, 0, 0, 0), false);
+            AnimatoInAcqua cavalluccio = new AnimatoInAcqua(CreaImmagine("cavalluccio.png", new Thickness(100, 100, 0, 0), 50, 50, new Size(50, 50)), 3000, 30, new Thickness(400, 200, 0, 0), true);
+            AnimatoPilotato pescepalla = new AnimatoPilotato(CreaImmagine("pescepalla.png", new Thickness(100, 100, 0, 0), 50, 50, new Size(50, 50)), false, 5, this);
             corallo.IniziaAnimazione(canvasAcquario);
             alga.IniziaAnimazione(canvasAcquario);
             tartaruga.IniziaAnimazione(canvasAcquario);
+            cavalluccio.IniziaAnimazione(canvasAcquario);
+            pescepalla.IniziaAnimazione(canvasAcquario);
+        }
+
+        Image CreaImmagine(string nome, Thickness posizione, double altezza, double lunghezza, Size grandezza)
+        {
+            Image immagine;
+            Uri source; // Fornisce una rappresentazione in forma di oggetto
+            source = new Uri(@$"pack://application:,,,/Immagini/{nome}", UriKind.RelativeOrAbsolute);
+            BitmapImage bitmap = new BitmapImage(source); // Elemento bitmap
+            immagine = new Image(); // Controllo per la visualizzazione di un'immagine
+            immagine.Source = bitmap;
+            immagine.Margin = posizione;
+            immagine.Height = altezza;
+            immagine.Width = lunghezza;
+            immagine.RenderSize = grandezza;
+            
+            return immagine;
         }
 
         #region Metodi di riferimento
