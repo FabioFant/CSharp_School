@@ -31,14 +31,16 @@ namespace WpfAppAcquario
 
             Inanimato corallo = new Inanimato(CreaImmagine("corallo.png", new Thickness(500, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50)));
             AnimatoSulPosto alga = new AnimatoSulPosto(CreaImmagine("alga.png", new Thickness(200, canvasAcquario.Height - 50, 0, 0), 50, 50, new Size(50, 50)), 500, false);
-            AnimatoSulFondo tartaruga = new AnimatoSulFondo(CreaImmagine("tartaruga.png", new Thickness(200, 0, 0, 0), 50, 50, new Size(50, 50)), 1500, 15, new Thickness(500, 0, 0, 0), false);
-            AnimatoInAcqua cavalluccio = new AnimatoInAcqua(CreaImmagine("cavalluccio.png", new Thickness(100, 100, 0, 0), 50, 50, new Size(50, 50)), 3000, 30, new Thickness(400, 200, 0, 0), true);
+            AnimatoSulFondo tartaruga = new AnimatoSulFondo(CreaImmagine("tartaruga.png", new Thickness(200, 0, 0, 0), 50, 50, new Size(50, 50)), 3500, 100, new Thickness(500, 0, 0, 0), false);
+            AnimatoInAcqua cavalluccio = new AnimatoInAcqua(CreaImmagine("cavalluccio.png", new Thickness(100, 100, 0, 0), 50, 50, new Size(50, 50)), 3000, 90, new Thickness(400, 200, 0, 0), true);
             AnimatoPilotato pescepalla = new AnimatoPilotato(CreaImmagine("pescepalla.png", new Thickness(100, 100, 0, 0), 50, 50, new Size(50, 50)), false, 5, this);
+            AnimatoPilotatoSilurato medusa = new AnimatoPilotatoSilurato(CreaImmagine("medusa.png", new Thickness(100, 100, 0, 0), 50, 50, new Size(50, 50)), CreaImmagine("banco.png", new Thickness(100, 100, 0, 0), 50, 50, new Size(50, 50)), false, 5, this);
             corallo.IniziaAnimazione(canvasAcquario);
             alga.IniziaAnimazione(canvasAcquario);
             tartaruga.IniziaAnimazione(canvasAcquario);
             cavalluccio.IniziaAnimazione(canvasAcquario);
             pescepalla.IniziaAnimazione(canvasAcquario);
+            medusa.IniziaAnimazione(canvasAcquario);
         }
 
         Image CreaImmagine(string nome, Thickness posizione, double altezza, double lunghezza, Size grandezza)
@@ -58,6 +60,7 @@ namespace WpfAppAcquario
         }
 
         #region Metodi di riferimento
+        /*
         const int MILLISECONDI = 300; // Numero di ms per fra un tick e l'altro
         DispatcherTimer dispatcherTimer; // Motore per le animazioni
         void SetupTimer()
@@ -138,6 +141,7 @@ namespace WpfAppAcquario
 
             immagine.RenderTransform = transfromGroup;
         }
+        */
         #endregion
     }
 }
