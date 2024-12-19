@@ -1,28 +1,41 @@
 ﻿using ProgettoCondiviso;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace LibreriaClassi
 {
     internal class AnimatoPilotatoSilurato : AnimatoPilotato
     {
         static int velocità_siluro = 5;
+        List<(Inanimato, bool)> siluri;
+        string nomeImm;
 
-        Image immSiluro;
-        List<Inanimato> siluri;
-        public AnimatoPilotatoSilurato(Image immagine, Image proiettile, bool flippato, int step, Window finestra)
-            : base(immagine, flippato, step, finestra)
+        public AnimatoPilotatoSilurato(Image immagine, string nome, bool flippato, int step, Window finestra, int ms = 10)
+            : base(immagine, flippato, step, finestra, ms)
         {
-            immSiluro = proiettile;
-            siluri = new List<Inanimato>();
+            siluri = new List<(Inanimato, bool)>();
+            nomeImm = nome;
 
-            motor.Interval = TimeSpan.FromMilliseconds(Intervallo);
+            motor.Interval = TimeSpan.FromMilliseconds(Ms);
             motor.Tick += new EventHandler(TickProiettili);
+
+            Immagine.Name = "AnimatoPilotatoSilurato";
+        }
+
+        public override void IniziaAnimazione(Canvas canvas)
+        {
+            // Aggiunta immagine al canvas e connessione dell'evento al tasto premuto
+            canvas.Children.Add(Immagine);
+            Finestra.KeyDown += Movimento;
+            Canvas = canvas;
+            motor.Start();
         }
 
         private void Movimento(object sender, KeyEventArgs e)
@@ -51,7 +64,7 @@ namespace LibreriaClassi
                     if (!dx) { FlipImmagine(); dx = true; }
                     break;
                 case Key.Space:
-                    CreaProiettile();
+                    CreaProiettile(currentX, currentY, dx);
                     break;
             }
 
@@ -60,21 +73,23 @@ namespace LibreriaClassi
             Canvas.SetTop(Immagine, currentY);
         }
 
-        private void CreaProiettile()
+        private void CreaProiettile(double x, double y, bool dx)
         {
-            Inanimato siluro = new Inanimato(immSiluro);
-            Image immIstanza = siluro.Immagine;
+            Inanimato siluro = new Inanimato(ImageManager.CreaImmagine(nomeImm, Immagine.Margin, 25, 25, new Size(25, 25)));
 
-            double variazione = dx ? immIstanza.Width : -immIstanza.Width;
-            immIstanza.Margin = new Thickness(immIstanza.Margin.Left + variazione, immIstanza.Margin.Top, immIstanza.Margin.Right, immIstanza.Margin.Bottom);
+            Canvas.SetTop(siluro.Immagine, y);
+            Canvas.SetLeft(siluro.Immagine, x);
 
             siluro.IniziaAnimazione(Canvas);
-            siluri.Add(siluro);
+            siluri.Add((siluro, dx));
         }
 
         private void TickProiettili(object sender, EventArgs e)
         {
-            foreach (Inanimato sil in siluri)
+            List<Image> image_garbage = new List<Image>();
+            List<(Inanimato, bool)> sil_garbage = new List<(Inanimato, bool)>();
+
+            foreach ((Inanimato sil, bool isDx) in siluri)
             {
                 // Posizione X corrente
                 double currentX = Canvas.GetLeft(sil.Immagine);
@@ -82,19 +97,36 @@ namespace LibreriaClassi
 
                 // Incremento opposto se la direzione è inversa
                 double incr = velocità_siluro;
-                if (!dx) incr *= -1;
+                if (!isDx) incr *= -1;
+                double newX = currentX + incr;
 
                 // Effettuo uno step
-                Canvas.SetLeft(sil.Immagine, currentX + incr);
-            }
-        }
+                Canvas.SetLeft(sil.Immagine, newX);
 
-        public override void IniziaAnimazione(Canvas canvas)
-        {
-            // Aggiunta immagine al canvas e connessione dell'evento al tasto premuto
-            canvas.Children.Add(Immagine);
-            Finestra.KeyDown += Movimento;
-            Canvas = canvas;
+                foreach(Image imm in Canvas.Children.OfType<Image>())
+                {
+                    if (imm.Name == "AnimatoInAcqua" || imm.Name == "AnimatoSulFondo" || imm.Name == "AnimatoSulPosto")
+                    {
+                        if (ImageManager.Collisione(sil.Immagine, imm))
+                        {
+                            image_garbage.Add(imm);
+                            sil_garbage.Add((sil, isDx));
+                        }
+                    } 
+                }
+
+                if ((newX + sil.Immagine.Margin.Left < 0 || newX > Canvas.ActualWidth - sil.Immagine.Margin.Left) && !sil_garbage.Contains((sil, isDx)))
+                    sil_garbage.Add((sil, isDx));
+            }
+
+            foreach (Image imm in image_garbage)
+                Canvas.Children.Remove(imm);
+
+            foreach((Inanimato sil, bool isDx) in sil_garbage)
+            {
+                Canvas.Children.Remove(sil.Immagine);
+                siluri.Remove((sil, isDx));
+            }
         }
     }
 }

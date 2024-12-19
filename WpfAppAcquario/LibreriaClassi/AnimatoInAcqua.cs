@@ -64,6 +64,7 @@ namespace LibreriaClassi
         public override void IniziaAnimazione(Canvas canvas)
         {
             // Set del motore e inizio
+            Immagine.Name = "AnimatoInAcqua";
             motor.Interval = TimeSpan.FromMilliseconds(Intervallo);
             motor.Tick += new EventHandler(TickAnimazione);
             canvas.Children.Add(Immagine);

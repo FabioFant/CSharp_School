@@ -39,6 +39,7 @@ namespace ProgettoCondiviso
 
         public override void IniziaAnimazione(Canvas canvas)
         {
+            Immagine.Name = "AnimatoSulFondo";
             // Inserisce l'inizializza il motore e incomincia l'animazione
             motor.Tick += new EventHandler(TickAnimazione);
             motor.Interval = TimeSpan.FromMilliseconds(Ms);

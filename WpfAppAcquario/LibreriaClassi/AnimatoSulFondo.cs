@@ -64,6 +64,7 @@ namespace ProgettoCondiviso
 
         public override void IniziaAnimazione(Canvas canvas)
         {
+            Immagine.Name = "AnimatoSulFondo";
             // Sposta l'immagine sul fondo nella posizione iniziale
             Immagine.Margin = new Thickness(Immagine.Margin.Left, canvas.Height - Immagine.RenderSize.Height, Immagine.Margin.Right, 0);
 

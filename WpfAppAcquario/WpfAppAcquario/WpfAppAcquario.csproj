@@ -11,23 +11,35 @@
   <ItemGroup>
     <None Remove="Immagini\alga.png" />
     <None Remove="Immagini\banco.png" />
+    <None Remove="Immagini\bg.png" />
+    <None Remove="Immagini\bolla.png" />
     <None Remove="Immagini\cavalluccio.png" />
     <None Remove="Immagini\corallo.png" />
     <None Remove="Immagini\medusa.png" />
+    <None Remove="Immagini\pesce.png" />
     <None Remove="Immagini\pescepalla.png" />
-    <None Remove="Immagini\sfondo.png" />
+    <None Remove="Immagini\pesce_pagliaccio.png" />
+    <None Remove="Immagini\polpo.png" />
     <None Remove="Immagini\tartaruga.png" />
+    <None Remove="Immagini\vongola.png" />
+    <None Remove="vongola.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Immagini\alga.png" />
     <Resource Include="Immagini\banco.png" />
+    <Resource Include="Immagini\bg.png" />
+    <Resource Include="Immagini\bolla.png" />
     <Resource Include="Immagini\cavalluccio.png" />
     <Resource Include="Immagini\corallo.png" />
     <Resource Include="Immagini\medusa.png" />
+    <Resource Include="Immagini\pesce.png" />
     <Resource Include="Immagini\pescepalla.png" />
-    <Resource Include="Immagini\sfondo.png" />
+    <Resource Include="Immagini\pesce_pagliaccio.png" />
+    <Resource Include="Immagini\polpo.png" />
     <Resource Include="Immagini\tartaruga.png" />
+    <Resource Include="Immagini\vongola.png" />
+    <Resource Include="vongola.png" />
   </ItemGroup>
 
   <Import Project="..\LibreriaClassi\LibreriaClassi.projitems" Label="Shared" />

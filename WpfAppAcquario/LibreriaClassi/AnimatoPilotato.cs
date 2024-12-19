@@ -55,6 +55,7 @@ namespace LibreriaClassi
         public override void IniziaAnimazione(Canvas canvas)
         {
             // Aggiunta immagine al canvas e connessione dell'evento al tasto premuto
+            Immagine.Name = "AnimatoPilotato";
             canvas.Children.Add(Immagine);
             Finestra.KeyDown += Movimento;
             Canvas = canvas;

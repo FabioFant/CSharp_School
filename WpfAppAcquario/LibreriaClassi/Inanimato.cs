@@ -17,7 +17,11 @@ namespace ProgettoCondiviso
         }
 
         protected void RimuoviImmagine() { Immagine.Source = null; }
-        public virtual void IniziaAnimazione(Canvas canvas) { canvas.Children.Add(Immagine); } // Aggiunge l'immagine al canvas
+        public virtual void IniziaAnimazione(Canvas canvas) 
+        {
+            Immagine.Name = "Inanimato";
+            canvas.Children.Add(Immagine); 
+        }
 
     }
 }

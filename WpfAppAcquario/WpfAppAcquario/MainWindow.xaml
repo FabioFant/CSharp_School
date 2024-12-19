@@ -5,15 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppAcquario"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Acquario (MEDUSA: wasd + spazio) (PESCEPALLA: freccette) by Fabio Fantini 4H 2024-12-20" Height="450" Width="800" ResizeMode="NoResize" Icon="/vongola.png">
     <Grid HorizontalAlignment="Center" Width="800" Height="434" VerticalAlignment="Bottom">
-        <Canvas x:Name="canvasAcquario" Height="400" Width="600" Margin="190,17,10,17" ClipToBounds="True">
+        <Canvas x:Name="canvasAcquario" Height="434" Width="800" ClipToBounds="True">
             <Canvas.Background>
-                <ImageBrush ImageSource="/Immagini/sfondo.png"/>
+                <ImageBrush ImageSource="/Immagini/bg.png"/>
             </Canvas.Background>
         </Canvas>
-        <Label x:Name="txtContatore" Content="N.Tick: " HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Height="30" Width="80"/>
-        <Label x:Name="txtMillSec" Content="Ms: " HorizontalAlignment="Left" Margin="105,17,0,0" VerticalAlignment="Top" Height="30" Width="80"/>
 
     </Grid>
 </Window>
