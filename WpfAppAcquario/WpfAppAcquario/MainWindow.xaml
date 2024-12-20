@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppAcquario"
         mc:Ignorable="d"
-        Title="Acquario (MEDUSA: wasd + spazio) (PESCEPALLA: freccette) by Fabio Fantini 4H 2024-12-20" Height="450" Width="800" ResizeMode="NoResize" Icon="/vongola.png">
+        Title="Acquario" Height="450" Width="800" ResizeMode="NoResize" Icon="/vongola.png">
     <Grid HorizontalAlignment="Center" Width="800" Height="434" VerticalAlignment="Bottom">
         <Canvas x:Name="canvasAcquario" Height="434" Width="800" ClipToBounds="True">
             <Canvas.Background>
                 <ImageBrush ImageSource="/Immagini/bg.png"/>
             </Canvas.Background>
+            <Label x:Name="txt_medusa" Content="Medusa: WASD + SPAZIO" Canvas.Left="10" Canvas.Top="35" HorizontalAlignment="Center" VerticalAlignment="Top" Width="167" FontFamily="Cascadia Code" FontWeight="Bold"/>
+            <Label x:Name="txt_medusa_Copia" Content="Pescepalla: Freccette" Canvas.Left="632" Canvas.Top="35" Width="158" FontFamily="Cascadia Code" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label x:Name="txt_Intestazione" Content="Fabio Fantini 4H 2024-12-20" Canvas.Left="321" Canvas.Top="35" Width="158" FontFamily="Cascadia Code" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Canvas>
 
     </Grid>

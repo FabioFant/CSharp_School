@@ -59,7 +59,7 @@ namespace WpfAppAcquario
             // AnimatoPilotatoSilurante
             AnimatoPilotatoSilurato medusa = new AnimatoPilotatoSilurato(ImageManager.CreaImmagine("medusa.png", new Thickness(100, 300, 0, 0), p, p, new Size(p, p)), "bolla.png", false, 5, this);
 
-            #region Init
+            #region Init animazione
             corallo1.IniziaAnimazione(canvasAcquario);
             corallo2.IniziaAnimazione(canvasAcquario);
             corallo3.IniziaAnimazione(canvasAcquario);
