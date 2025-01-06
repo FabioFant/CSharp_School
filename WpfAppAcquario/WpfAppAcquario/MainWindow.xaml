@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppAcquario"
         mc:Ignorable="d"
-        Title="Acquario" Height="450" Width="800" ResizeMode="NoResize" Icon="/vongola.png">
+        Title="Acquario" Height="450" Width="800" ResizeMode="NoResize">
     <Grid HorizontalAlignment="Center" Width="800" Height="434" VerticalAlignment="Bottom">
         <Canvas x:Name="canvasAcquario" Height="434" Width="800" ClipToBounds="True">
             <Canvas.Background>

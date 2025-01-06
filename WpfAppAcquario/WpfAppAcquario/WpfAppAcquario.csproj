@@ -39,7 +39,6 @@
     <Resource Include="Immagini\polpo.png" />
     <Resource Include="Immagini\tartaruga.png" />
     <Resource Include="Immagini\vongola.png" />
-    <Resource Include="vongola.png" />
   </ItemGroup>
 
   <Import Project="..\LibreriaClassi\LibreriaClassi.projitems" Label="Shared" />
