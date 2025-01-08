@@ -299,7 +299,7 @@ namespace ConsoleAppTreni
             // Start
             Scrivi(50, 24, "Premi un tasto per iniziare!", 0, ConsoleColor.DarkYellow);
             ReadKey(true);
-            Scrivi(50, 24, "                           ", 0, ConsoleColor.DarkYellow);
+            Scrivi(50, 24, "                            ", 0, ConsoleColor.DarkYellow);
 
             // Avvio dei thread
             thManager.Start();
