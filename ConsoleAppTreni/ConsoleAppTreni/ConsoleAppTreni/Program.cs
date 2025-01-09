@@ -131,8 +131,8 @@ namespace ConsoleAppTreni
             do
             {
                 // Se il semaforo è rosso, il pedone resta fermo
-                if ((thTreno1.IsAlive && posPedone == 24) || (thTreno2.IsAlive && posPedone == 89))
-                    continue;
+                if (thTreno1.IsAlive && posPedone == 24) thTreno1.Join();
+                else if (thTreno2.IsAlive && posPedone == 89) thTreno2.Join();
 
                 // Posizione successiva animazione
                 posPedone++;
@@ -164,11 +164,11 @@ namespace ConsoleAppTreni
             do
             {
                 int currY = posTreno1;
+                bool valid = true;
                 foreach(string strato in treno)
                 {
-                    if (currY == 28) // fine della console verticalmente
-                        break;
-                    Scrivi(31, ++currY, strato, PAUSA_TRENI); // scrittura della riga del treno
+                    if (currY == 28) valid = false; // fine della console verticalmente
+                    if (valid) Scrivi(31, ++currY, strato, PAUSA_TRENI); // scrittura della riga del treno
                 }
                 Scrivi(31, ++posTreno1, "   ", PAUSA_TRENI);
 
@@ -204,11 +204,11 @@ namespace ConsoleAppTreni
             do
             {
                 int currY = posTreno2;
+                bool valid = true;
                 foreach (string strato in treno)
                 {
-                    if (currY == 28) // fine della console verticalmente
-                        break;
-                    Scrivi(96, ++currY, strato, PAUSA_TRENI); // scrittura della riga del treno
+                    if (currY == 28) valid = false; // fine della console verticalmente
+                    if(valid) Scrivi(96, ++currY, strato, PAUSA_TRENI); // scrittura della riga del treno
                 }
                 Scrivi(96, ++posTreno2, "   ", PAUSA_TRENI);
 
@@ -226,10 +226,11 @@ namespace ConsoleAppTreni
         {
             do
             {
+
                 Stato(); // Aggiorna lo stato
                 if (KeyAvailable) AccettaComandi(); // Leggi input
 
-            } while (thPedone.IsAlive);
+            } while (thPedone.IsAlive || thTreno1.IsAlive || thTreno2.IsAlive);
             Stato();
         }
         static void AccettaComandi()
