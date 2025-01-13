@@ -3,6 +3,7 @@
 
 // Librerie utilizzate
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using static System.Console;
@@ -34,8 +35,6 @@ namespace ConsoleAppTreni
 
         // Posizioni del pedone e treni
         static int posPedone = 0;
-        static int posTreno1;
-        static int posTreno2;
 
         // Determinano se il transito dei treni è terminato 
         static bool finito1 = false;
@@ -63,6 +62,15 @@ namespace ConsoleAppTreni
         #endregion
 
         #region Metodi per console
+
+        /// <summary>
+        /// Scrive un messaggio in una posizione precisa della console utilizzando la mutua esclusione.
+        /// </summary>
+        /// <param name="col">Colonna della console.</param>
+        /// <param name="rig">Riga della console.</param>
+        /// <param name="mess">Messaggio da stampare</param>
+        /// <param name="sleep">Pausa prima di stampare in millisecondi.</param>
+        /// <param name="colore">Colore del messaggio.</param>
         static void Scrivi(int col, int rig, string mess, int sleep, ConsoleColor colore = ConsoleColor.White)
         {
             // Attesa
@@ -77,6 +85,10 @@ namespace ConsoleAppTreni
             // Colore di default
             ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        /// Stampa lo stato dei thread
+        /// </summary>
         static void Stato()
         {
             // Treno 1
@@ -90,6 +102,10 @@ namespace ConsoleAppTreni
             // Pedone
             Scrivi(102, 26, thPedone.ThreadState + "              ", PAUSA_PEDONE);
         }
+
+        /// <summary>
+        /// Stampa l'interfaccia iniziale della stazione
+        /// </summary>
         static void Interfaccia()
         {
             //          1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345
@@ -126,6 +142,10 @@ namespace ConsoleAppTreni
         #endregion
 
         #region Metodi per i Thread
+
+        /// <summary>
+        /// Metodo per i thread del pedone: Gestisce il movimento e la stampa, insieme al Join quando il semaforo è rosso
+        /// </summary>
         static void Pedone()
         {
             do
@@ -142,86 +162,84 @@ namespace ConsoleAppTreni
 
             } while (posPedone < 115); // Finchè non si raggiunge la destinazione (fine console)
         }
-        static void Treno1()
-        {
-            // Semaforo rosso
-            Scrivi(35, 8, "■", 0, ConsoleColor.Red);
-            Scrivi(29, 11, "|", 0);
-            Scrivi(29, 12, "|", 0);
-            Scrivi(29, 13, "|", 0);
 
-            // Stampa entrata treno nella console
-            for (int i = 1; i <= 9; i++) // i = numero di strati da stampare
+        /// <summary>
+        /// Metodo per i thread dei treni: Gestisce il movimento e la stampa del treno.
+        /// </summary>
+        /// <exception cref="Exception">Eccezione quando il nome non è corretto.</exception>
+        static void Treno()
+        {
+            // Determina la posizione del treno in base al thread
+            int col;
+            switch (Thread.CurrentThread.Name)
             {
-                for (int j = i; j > 0; j--) // j = numero di strati rimanenti da stampare
-                {
-                    Scrivi(31, j + 1, treno[treno.Length - (i - j) - 1], PAUSA_TRENI);
-                }
+                case "Treno1":
+                    col = 31;
+                    break;
+
+                case "Treno2":
+                    col = 96;
+                    break;
+
+                default:
+                    throw new Exception($"Nome del Thread incorretto. Nome inserito: {Thread.CurrentThread.Name}.");
             }
 
-            // Transito del treno
-            posTreno1 = 1;
-            do
-            {
-                int currY = posTreno1;
-                bool valid = true;
-                foreach(string strato in treno)
-                {
-                    if (currY == 28) valid = false; // fine della console verticalmente
-                    if (valid) Scrivi(31, ++currY, strato, PAUSA_TRENI); // scrittura della riga del treno
-                }
-                Scrivi(31, ++posTreno1, "   ", PAUSA_TRENI);
-
-            } while (posTreno1 < 28);
-
-            // Semaforo verde
-            Scrivi(35, 8, "■", 0, ConsoleColor.Green);
-            Scrivi(29, 11, " ", 0);
-            Scrivi(29, 12, " ", 0);
-            Scrivi(29, 13, " ", 0);
-
-            finito1 = true; // Avviso il Main che ho terminato
-        }
-        static void Treno2()
-        {
             // Semaforo rosso
-            Scrivi(100, 8, "■", 0, ConsoleColor.Red);
-            Scrivi(94, 11, "|", 0);
-            Scrivi(94, 12, "|", 0);
-            Scrivi(94, 13, "|", 0);
-            
+            Scrivi(col + 4, 8, "■", 0, ConsoleColor.Red);
+            Scrivi(col - 2, 11, "|", 0);
+            Scrivi(col - 2, 12, "|", 0);
+            Scrivi(col - 2, 13, "|", 0);
+
             // Stampa entrata del trano nella console
             for (int i = 1; i <= 9; i++) // i = numero di strati da stampare
             {
                 for (int j = i; j > 0; j--) // j = numero di strati rimanenti da stampare
                 {
-                    Scrivi(96, j + 1, treno[treno.Length - (i - j) - 1], PAUSA_TRENI);
+                    Scrivi(col, j + 1, treno[treno.Length - (i - j) - 1], PAUSA_TRENI);
                 }
             }
 
             // Transito del treno
-            posTreno2 = 1;
+            int posTreno = 1;
             do
             {
-                int currY = posTreno2;
+                int currY = posTreno;
                 bool valid = true;
                 foreach (string strato in treno)
                 {
                     if (currY == 28) valid = false; // fine della console verticalmente
-                    if(valid) Scrivi(96, ++currY, strato, PAUSA_TRENI); // scrittura della riga del treno
+                    if (valid) Scrivi(col, ++currY, strato, PAUSA_TRENI); // scrittura della riga del treno
                 }
-                Scrivi(96, ++posTreno2, "   ", PAUSA_TRENI);
+                Scrivi(col, ++posTreno, "   ", PAUSA_TRENI);
 
-            } while (posTreno2 < 28);
+            } while (posTreno < 28);
 
             // Semaforo verde
-            Scrivi(100, 8, "■", 0, ConsoleColor.Green);
-            Scrivi(94, 11, " ", 0);
-            Scrivi(94, 12, " ", 0);
-            Scrivi(94, 13, " ", 0);
+            Scrivi(col + 4, 8, "■", 0, ConsoleColor.Green);
+            Scrivi(col - 2, 11, " ", 0);
+            Scrivi(col - 2, 12, " ", 0);
+            Scrivi(col - 2, 13, " ", 0);
 
-            finito2 = true; // Avviso il Main che ho terminato
+            // Individua il thread e avvisa il main che è terminato
+            switch (Thread.CurrentThread.Name)
+            {
+                case "Treno1":
+                    finito1 = true;
+                    break;
+
+                case "Treno2":
+                    finito2 = true;
+                    break;
+
+                default:
+                    throw new Exception($"Nome del Thread incorretto. Nome inserito: {Thread.CurrentThread.Name}.");
+            }
         }
+
+        /// <summary>
+        /// Metodo per thread che stampa gli stati dei thread e gestisce l'input
+        /// </summary>
         static void Manager()
         {
             do
@@ -233,6 +251,10 @@ namespace ConsoleAppTreni
             } while (thPedone.IsAlive || thTreno1.IsAlive || thTreno2.IsAlive);
             Stato();
         }
+
+        /// <summary>
+        /// Memorizza il comando inserito per effettuare delle azioni sul thread del pedone
+        /// </summary>
         static void AccettaComandi()
         {
             char choice = ' ';
@@ -287,14 +309,14 @@ namespace ConsoleAppTreni
             // Init dei thread
             thPedone = new Thread(Pedone);
             thManager = new Thread(Manager);
-            thTreno1 = new Thread(Treno1);
-            thTreno2 = new Thread(Treno2);
+            thTreno1 = new Thread(Treno);
+            thTreno2 = new Thread(Treno);
 
             // Assegnazione nomi
             thPedone.Name = "Pedone";
+            thManager.Name = "Manager";
             thTreno1.Name = "Treno1";
             thTreno2.Name = "Treno2";
-            thManager.Name = "Manager";
             #endregion
 
             // Start
@@ -318,7 +340,7 @@ namespace ConsoleAppTreni
                 // Attivo il Treno1 quando finisce la pusa
                 if (pausa1 == count1)
                 {
-                    thTreno1 = new Thread(Treno1);
+                    thTreno1 = new Thread(Treno);
                     thTreno1.Name = "Treno1";
                     thTreno1.Start();
                 }
@@ -335,7 +357,7 @@ namespace ConsoleAppTreni
                 // Attivo il Treno2 quando finisce la pusa
                 if (pausa2 == count2)
                 {
-                    thTreno2 = new Thread(Treno2);
+                    thTreno2 = new Thread(Treno);
                     thTreno2.Name = "Treno2";
                     thTreno2.Start();
                 }
