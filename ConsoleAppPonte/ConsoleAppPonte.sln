@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppPonte", "ConsoleAppPonte\ConsoleAppPonte.csproj", "{94973747-CB59-4DE1-8E9D-46BB61BFE348}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94973747-CB59-4DE1-8E9D-46BB61BFE348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94973747-CB59-4DE1-8E9D-46BB61BFE348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94973747-CB59-4DE1-8E9D-46BB61BFE348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94973747-CB59-4DE1-8E9D-46BB61BFE348}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8C2BEAA-8F03-416A-A6DA-F1C77258728D}
+	EndGlobalSection
+EndGlobal
