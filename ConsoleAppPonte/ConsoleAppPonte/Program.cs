@@ -1,14 +1,16 @@
 ﻿// Fabio Fantini 4H 2025-01-20
 // Ponte con apertura / chiusura per far passare le auto.
-// Svolgimento con semafori
+// Svolgimento con semafori binari e di dijkstra
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using static System.Console;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ConsoleAppPonte
 {
@@ -19,29 +21,37 @@ namespace ConsoleAppPonte
 
         const int NUM_AUTO_SUL_PONTE = 4; // Portata massima del ponte in numero di autoù
 
-        const int MAX_PAUSA = 30;
-        const int MIN_PAUSA = 10;
+        const int MAX_AUTO_CONSOLE = 8; // Max auto nel parcheggio stampabili su console
 
-        static Random rnd = new Random();
+        const int MAX_PAUSA = 40;   // Sleep max per auto
+        const int MIN_PAUSA = 20;   // Sleep min per auto
+
+        static Random rnd = new Random(); // Definizione istanza random
 
         // Mutua Esclusione
         static Object lockConsole    = new Object();
         static Object lockParcheggio = new Object();
         static Object lockCorsia     = new Object();
+        static Object lockPonte = new Object();
+
+        static SemaphoreSlim semaphore = new SemaphoreSlim(NUM_AUTO_SUL_PONTE);
 
         // Variabili per i thread
-        static List<Thread> passa;          // Lista auto in transito
-        static bool levatoio = true;        // Levatoio alto/basso
-        static List<string> parcheggio = new List<string>();    // Auto nel parcheggio
-        static bool[] corsia = new bool[NUM_AUTO_SUL_PONTE];    // Stato delle corsie libero
-        static int n_auto_totali = 0;
+        static List<Thread> passa = new List<Thread>(NUM_AUTO_SUL_PONTE); // Lista auto in transito
+        static bool levatoio = true;                                      // Levatoio alto/basso
+        static List<string> parcheggio = new List<string>();              // Auto nel parcheggio
+        static bool[] corsia = new bool[NUM_AUTO_SUL_PONTE];              // Stato delle corsie libero
+        static int n_auto_totali = 0;                                     // Numero di auto totali, per l'identificazione
 
-        static bool exit = false;
+        static bool exit = false; // Per terminare il programma
 
         #endregion
 
         #region Metodi per Console
 
+        /// <summary>
+        /// Stampa la mappa del programma
+        /// </summary>
         static void StampaMappa()
         {
             lock (lockConsole)
@@ -79,6 +89,7 @@ namespace ConsoleAppPonte
                 ForegroundColor = ConsoleColor.White;
             }
         }
+
         /// <summary>
         /// Scrive un messaggio in una posizione precisa della console utilizzando la mutua esclusione.
         /// </summary>
@@ -101,34 +112,10 @@ namespace ConsoleAppPonte
             // Colore di default
             ForegroundColor = ConsoleColor.White;
         }
-        static void ApriPonte()
-        {
-            levatoio = false;
 
-            lock (lockConsole)
-            {
-                Scrivi(43, 12, "╚═══════════════════════════╝", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 13, "                             ", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 14, "                             ", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 15, "                             ", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 16, "                             ", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 17, "╔═══════════════════════════╗", 0, ConsoleColor.DarkYellow);
-            }
-        }
-        static void ChiudiPonte()
-        {
-            levatoio = true;
-
-            lock (lockConsole)
-            {
-                Scrivi(43, 12, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 13, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 14, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 15, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 16, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
-                Scrivi(43, 17, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
-            }
-        }
+        /// <summary>
+        /// Permette all'utente di inviare un input ed effettuare un'azione per il programma
+        /// </summary>
         static void AccettaComandi()
         {
             char choice = ' ';
@@ -141,6 +128,7 @@ namespace ConsoleAppPonte
             switch (choice)
             {
                 case 'A':
+                    AggiungiAutoDaParcheggio();
                     break;
 
                 case 'C':
@@ -152,6 +140,8 @@ namespace ConsoleAppPonte
                     break;
 
                 case 'E':
+                    Scrivi(86, 6, "- Richiesta uscita", 0, ConsoleColor.DarkRed);
+                    Environment.Exit(0);
                     exit = true;
                     break;
 
@@ -159,47 +149,155 @@ namespace ConsoleAppPonte
                     return;
             }
         }
+
+        /// <summary>
+        /// Stampa le auto nel parcheggio
+        /// </summary>
         static void AggiornaParcheggio()
         {
-            for (int i = 0; i < parcheggio.Count; i++)
+            // Stampa delle auto che sono nel parcheggio
+            for (int i = 0; i < MAX_AUTO_CONSOLE + 1; i++)
             {
-                Scrivi(10, 3 + i, parcheggio[i], 0);
+                if (i < parcheggio.Count) Scrivi(10, 3 + i, parcheggio[i], 0); // Stampa l'auto
+                else Scrivi(10, 3 + i, "                 ", 0); // Se le auto sono finite, stampa vuoto
             }
+            if (parcheggio.Count > MAX_AUTO_CONSOLE) Scrivi(10, MAX_AUTO_CONSOLE + 3, "...              ", 0); // Se le auto sono troppe, stampa puntini
         }
-
         #endregion
 
         #region Metodi per Thread
 
-        static void AggiungiAuto()
+        /// <summary>
+        /// Apre il ponte lasciando le auto passare
+        /// </summary>
+        static void ApriPonte()
         {
-            n_auto_totali++;
+            if (!levatoio) return;
+
+            // Apri il ponte
+            levatoio = false;
+            lock (lockConsole)
+            {
+                Scrivi(43, 12, "╚═══════════════════════════╝", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 13, "                             ", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 14, "                             ", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 15, "                             ", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 16, "                             ", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 17, "╔═══════════════════════════╗", 0, ConsoleColor.DarkYellow);
+            }
+        }
+
+        /// <summary>
+        /// Una volta che tutte le macchine che stanno transitando sono passate, il ponte si chiude e ulteriori auto non possono passare
+        /// </summary>
+        static void ChiudiPonte()
+        {
+            if (levatoio) return;
+
+            Scrivi(93, 4, "- Richiesta chiusura", 0, ConsoleColor.DarkRed);
+            lock (lockPonte)
+            {
+                // Aspetta che le auto transitino
+                for (int i = 0; i < passa.Count; i++)
+                    passa[i].Join();
+
+                // Chiudi il ponte
+                levatoio = true;
+            }
+            Scrivi(93, 4, "                    ", 0);
+
+            
+            lock (lockConsole)
+            {
+                Scrivi(43, 12, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 13, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 14, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 15, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 16, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
+                Scrivi(43, 17, "║░░░░░░░░░░░░░░░░░░░░░░░░░░░║", 0, ConsoleColor.DarkYellow);
+            }
+        }
+
+        /// <summary>
+        /// Aggiunge un auto al parcheggio attendendo di passare per il ponte
+        /// </summary>
+        static void AggiungiAutoDaParcheggio()
+        {
+            n_auto_totali++; // Aggiorna il numero di macchine ricevute
             lock (lockParcheggio)
             {
-                parcheggio.Add($"Auto {n_auto_totali}");
+                // Aggiunta dell'auto
+                string nome = $"Auto {n_auto_totali}";
+                parcheggio.Add(nome);
+                AggiornaParcheggio();
+
+                // Creazione del thread
+                Thread thAuto = new Thread(Auto);
+                thAuto.Name = nome;
+                thAuto.Start();
+            }
+        }
+
+        /// <summary>
+        /// Rimuove un auto dal parcheggio per passare poi dal ponte
+        /// </summary>
+        /// <param name="auto">Il nome dell'auto da rimuovere</param>
+        static void RimuoviAutoDaParcheggio(string auto)
+        {
+            // Check se la macchina è nel parcheggio
+            if (!parcheggio.Contains(auto))
+                new Exception($"ERRORE : Impossibile trovare l'auto ''{auto}'' nel parcheggio.");
+
+            // Rimozione
+            lock (lockParcheggio)
+            {
+                parcheggio.Remove(auto);
                 AggiornaParcheggio();
             }
         }
-        static void Auto(object obj)
-        {
-            string[] input = (string[])obj;
 
+        /// <summary>
+        /// Metodo per i thread auto. Attende che ci sia una corsia libera e che il ponte sia aperto, poi transita per il ponte
+        /// </summary>
+        static void Auto()
+        {
+            // Init
             int posAuto = 0;
-            string auto = input[0];
-            int col = int.Parse(input[1]);
+            string auto = Thread.CurrentThread.Name;
             int pausa = rnd.Next(MIN_PAUSA, MAX_PAUSA);
 
-            lock(lockCorsia) corsia[col - 1] = true;
+            semaphore.Wait(); // Aspetta che si liberi una corsia
+
+            lock (lockPonte) passa.Add(Thread.CurrentThread); // Informa il ponte che il thread deve transitare
+            while (levatoio) { /* Aspettando che si apra il ponte */ }
+
+            RimuoviAutoDaParcheggio(auto); // Rimuovi auto dal parcheggio
+
+            // Cerca la corsia libera
+            int rig = -1;
+            lock (lockCorsia)
+            {
+                for (int i = 0; i < NUM_AUTO_SUL_PONTE; i++)
+                    if (corsia[i])
+                    {
+                        rig = i;
+                        corsia[i] = false; // Blocca la corsia
+                        break;
+                    }
+            }
+
             do
             {
                 // Posizione successiva animazione
                 posAuto++;
-                Scrivi(posAuto, col, auto, pausa);
+                Scrivi(posAuto, rig + 13, ' ' + auto, pausa);
 
-            } while (posAuto < 115); // Finchè non si raggiunge la destinazione (fine console)
-            lock (lockCorsia) corsia[col - 1] = false;
+            } while (posAuto < 110); // Finchè non si raggiunge la destinazione (fine console)
+
+            lock (lockCorsia) corsia[rig] = true; // Sblocca la corsia
+            passa.Remove(Thread.CurrentThread); // Avvisa il ponte che il thread non deve transitare (Non bisogna mettere il lock!)
+            semaphore.Release(); // Libera il posto
         }
-
         #endregion
 
         static void Main(string[] args)
@@ -210,6 +308,11 @@ namespace ConsoleAppPonte
             WriteLine("Fabio Fantini 4H 2024-11-04\n");
             StampaMappa();
 
+            // Init delle corsie
+            for (int i = 0; i < corsia.Length; i++)
+                corsia[i] = true;
+
+            // Accetta input in qualsiasi momento
             while(!exit)
             {
                 if(KeyAvailable) AccettaComandi();
