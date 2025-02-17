@@ -37,10 +37,12 @@ namespace ConsoleAppPonte
         static SemaphoreSlim semaphore = new SemaphoreSlim(NUM_AUTO_SUL_PONTE);
 
         // Variabili per i thread
+        static List<Thread> threads = new List<Thread>();                 // Tutti i thread, abortiti all'uscita del programma
         static List<Thread> passa = new List<Thread>(NUM_AUTO_SUL_PONTE); // Lista auto in transito
-        static bool levatoio = true;                                      // Levatoio alto/basso
         static List<string> parcheggio = new List<string>();              // Auto nel parcheggio
         static bool[] corsia = new bool[NUM_AUTO_SUL_PONTE];              // Stato delle corsie libero
+
+        static bool levatoio = true;                                      // Levatoio alto/basso
         static int n_auto_totali = 0;                                     // Numero di auto totali, per l'identificazione
 
         static bool exit = false; // Per terminare il programma
@@ -132,7 +134,13 @@ namespace ConsoleAppPonte
                     break;
 
                 case 'C':
-                    ChiudiPonte();
+                    if (!levatoio) // Esegui solo se il ponte non è chiuso
+                    {
+                        // Viene utilizzato un thread evitando che il main si blocchi
+                        Thread thChiudiPonte = new Thread(ChiudiPonte);
+                        thChiudiPonte.Name = "ChiudiPonte";
+                        thChiudiPonte.Start();
+                    }
                     break;
 
                 case 'O':
@@ -141,7 +149,7 @@ namespace ConsoleAppPonte
 
                 case 'E':
                     Scrivi(86, 6, "- Richiesta uscita", 0, ConsoleColor.DarkRed);
-                    Environment.Exit(0);
+                    Environment.Exit(0); // Chiusura forzata di tutti i thread
                     exit = true;
                     break;
 
@@ -192,17 +200,18 @@ namespace ConsoleAppPonte
         /// </summary>
         static void ChiudiPonte()
         {
-            if (levatoio) return;
+            // Chiudi il ponte
+            levatoio = true;
 
             Scrivi(93, 4, "- Richiesta chiusura", 0, ConsoleColor.DarkRed);
             lock (lockPonte)
             {
-                // Aspetta che le auto transitino
-                for (int i = 0; i < passa.Count; i++)
-                    passa[i].Join();
-
-                // Chiudi il ponte
-                levatoio = true;
+                while (passa.Count > 0)
+                {
+                    // Aspetta che le auto transitino (Non strettamente necessario)
+                    for (int i = 0; i < passa.Count; i++)
+                        passa[i].Join();
+                }
             }
             Scrivi(93, 4, "                    ", 0);
 
@@ -235,6 +244,7 @@ namespace ConsoleAppPonte
                 Thread thAuto = new Thread(Auto);
                 thAuto.Name = nome;
                 thAuto.Start();
+                threads.Add(thAuto);
             }
         }
 
@@ -268,8 +278,8 @@ namespace ConsoleAppPonte
 
             semaphore.Wait(); // Aspetta che si liberi una corsia
 
+            while (levatoio) { Thread.Sleep(1); } // Aspettando che si apra il ponte
             lock (lockPonte) passa.Add(Thread.CurrentThread); // Informa il ponte che il thread deve transitare
-            while (levatoio) { /* Aspettando che si apra il ponte */ }
 
             RimuoviAutoDaParcheggio(auto); // Rimuovi auto dal parcheggio
 
@@ -298,6 +308,7 @@ namespace ConsoleAppPonte
             passa.Remove(Thread.CurrentThread); // Avvisa il ponte che il thread non deve transitare (Non bisogna mettere il lock!)
             semaphore.Release(); // Libera il posto
         }
+
         #endregion
 
         static void Main(string[] args)
