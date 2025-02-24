@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppFiltriConvoluzione", "WpfAppFiltriImmagini\WpfAppFiltriConvoluzione.csproj", "{C558B1E6-DFC7-447B-B12F-FF60695AC84E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C558B1E6-DFC7-447B-B12F-FF60695AC84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C558B1E6-DFC7-447B-B12F-FF60695AC84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C558B1E6-DFC7-447B-B12F-FF60695AC84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C558B1E6-DFC7-447B-B12F-FF60695AC84E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFB46A2D-200D-4D81-80BF-53E154BBFA58}
+	EndGlobalSection
+EndGlobal
