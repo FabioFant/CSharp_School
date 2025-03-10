@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfAppProgressBarAsyncReturn.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppProgressBarAsyncReturn"
+        mc:Ignorable="d"
+        Title="ProgressBarAsyncReturn" Height="280" Width="480" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ProgressBar x:Name="ProgressBarAsync01" HorizontalAlignment="Left" Height="25" Margin="230,30,0,0" VerticalAlignment="Top" Width="171"/>
+        <TextBox x:Name="txtAsync01" HorizontalAlignment="Left" Margin="230,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="23"/>
+        <ProgressBar x:Name="ProgressBarAsync02" HorizontalAlignment="Left" Height="25" Margin="230,141,0,0" VerticalAlignment="Top" Width="171"/>
+        <TextBox x:Name="txtAsync02" HorizontalAlignment="Left" Margin="230,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Height="23"/>
+        <Button x:Name="btnStart" Content="Start ProgressBar" HorizontalAlignment="Left" Margin="41,98,0,0" VerticalAlignment="Top" Width="120" Height="34" Click="Button_Click"/>
+        <Label Content="Fabio Fantini 4H 2025-03-10" HorizontalAlignment="Left" Margin="41,30,0,0" VerticalAlignment="Top" Width="120" FontSize="8" FontWeight="Bold"/>
+    </Grid>
+</Window>

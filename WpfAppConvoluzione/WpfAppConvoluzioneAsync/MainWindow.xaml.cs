@@ -1,5 +1,5 @@
 ﻿// Fabio Fantini 4H 2025-02-24
-// Applicazione per caricamento immagini e applicazione di un filtro personalizzato su di esse
+// Convoluzione asincrona con prograssbar
 
 using System.Text;
 using System.Windows;
@@ -17,8 +17,9 @@ using System.Drawing.Configuration;
 using System.Drawing.Printing;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
-namespace WpfAppFiltriImmagini
+namespace WpfAppConvoluzioneAsync
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -58,8 +59,10 @@ namespace WpfAppFiltriImmagini
             }
         }
 
-        private void btnTrasforma_Click(object sender, RoutedEventArgs e)
+        private async void btnTrasforma_Click(object sender, RoutedEventArgs e)
         {
+            btnTrasforma.IsEnabled = false;
+
             // Input della matrice
             int[,] matControl = new int[3, 3];
             matControl[0, 0] = int.Parse(txt00.Text);
@@ -76,21 +79,35 @@ namespace WpfAppFiltriImmagini
 
             Bitmap imgRisultato = new Bitmap(imgOriginale.Width - 2, imgOriginale.Height - 2); // Nuova immagine
 
-            imgRisultato = Convoluzione(imgOriginale, matControl); // Immagine con filtro
+            // Avvio del task asincrono
+            Task<Bitmap> ConvoluzioneImmagine = Convoluzione(imgOriginale, matControl);
+            imgRisultato = await ConvoluzioneImmagine;
 
             imgFoto.Source = BitmapToBitmapSource(imgRisultato); // Visualizza l'immagine nuova
+
+            btnTrasforma.IsEnabled = true;
         }
 
-        private Bitmap Convoluzione(Bitmap img, int[,] matrice)
+        private async Task<Bitmap> Convoluzione(Bitmap img, int[,] matrice)
         {
             Bitmap imgRis = new Bitmap(img.Width, img.Height); // Immagine vuota
+
+            // Set progressbar
+            lblEsito.Content = "Convoluzione in corso...";
+            progressBar.Minimum = 0;
+            progressBar.Maximum = (img.Width * img.Height) / 2; // Area dell'immagine, numero di pixel
+
             for (int i = 0; i < img.Width; i++)
             {
                 for (int j = 0; j < img.Height; j++)
                 {
                     imgRis.SetPixel(i, j, CalcolaConvoluzione(img, i, j, matrice)); // Set del pixel con convoluzione
+                    progressBar.Value = img.Width * i + j + 1;
+                    await Task.Delay(1); // TODO : fixare questo
                 }
             }
+
+            lblEsito.Content = "Convoluzione terminata";
             return imgRis;
 
         }
@@ -113,8 +130,8 @@ namespace WpfAppFiltriImmagini
                     int posY = y + j - 1;
 
                     // Gestisce la fuoriuscita dai margini
-                    if(posX < 0) { posX = 0; }
-                    else if(posX >= img.Width) { posX = img.Width - 1; }
+                    if (posX < 0) { posX = 0; }
+                    else if (posX >= img.Width) { posX = img.Width - 1; }
 
                     if (posY < 0) { posY = 0; }
                     else if (posY >= img.Height) { posY = img.Height - 1; }
@@ -125,7 +142,7 @@ namespace WpfAppFiltriImmagini
                     G += pixel.G * matrice[i, j];
                     B += pixel.B * matrice[i, j];
                 }
-                
+
                 //Controllo il valore del colore
                 R = ControllaValore(R);
                 G = ControllaValore(G);
@@ -138,9 +155,9 @@ namespace WpfAppFiltriImmagini
         private static int ControllaValore(int subPixel)
         {
             // Evita che il valore del colore rimanga fra [0-255]
-            if(subPixel < 0)
+            if (subPixel < 0)
                 return 0;
-            else if(subPixel > 255)
+            else if (subPixel > 255)
                 return 255;
 
             return subPixel;

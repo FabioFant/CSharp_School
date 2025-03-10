@@ -5,6 +5,16 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppConvoluzione", "WpfAppConvoluzione\WpfAppConvoluzione.csproj", "{26C5CD3D-0B16-4BB8-A8D2-638E1C054F27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarSync", "WpfAppProgressBarSync\WpfAppProgressBarSync.csproj", "{726DC8B8-91EF-4064-92BA-605B167514D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarAsync", "WpfAppProgressBarAsync\WpfAppProgressBarAsync.csproj", "{F01F60C7-AF0A-4E9F-AEBD-62BD070F9776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarAsync2", "WpfAppProgressBarAsync2\WpfAppProgressBarAsync2.csproj", "{00030FC1-D4FF-4040-B262-2DB4487EC393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarAsyncReturn", "WpfAppProgressBarAsyncReturn\WpfAppProgressBarAsyncReturn.csproj", "{2C1ACC44-2A09-40C9-8626-87B329AF7868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppConvoluzioneAsync", "WpfAppConvoluzioneAsync\WpfAppConvoluzioneAsync.csproj", "{B944A5A6-BCE8-4BAD-8622-831E74697ADB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{26C5CD3D-0B16-4BB8-A8D2-638E1C054F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26C5CD3D-0B16-4BB8-A8D2-638E1C054F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26C5CD3D-0B16-4BB8-A8D2-638E1C054F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726DC8B8-91EF-4064-92BA-605B167514D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726DC8B8-91EF-4064-92BA-605B167514D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726DC8B8-91EF-4064-92BA-605B167514D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726DC8B8-91EF-4064-92BA-605B167514D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01F60C7-AF0A-4E9F-AEBD-62BD070F9776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01F60C7-AF0A-4E9F-AEBD-62BD070F9776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01F60C7-AF0A-4E9F-AEBD-62BD070F9776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01F60C7-AF0A-4E9F-AEBD-62BD070F9776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00030FC1-D4FF-4040-B262-2DB4487EC393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00030FC1-D4FF-4040-B262-2DB4487EC393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00030FC1-D4FF-4040-B262-2DB4487EC393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00030FC1-D4FF-4040-B262-2DB4487EC393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1ACC44-2A09-40C9-8626-87B329AF7868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1ACC44-2A09-40C9-8626-87B329AF7868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1ACC44-2A09-40C9-8626-87B329AF7868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1ACC44-2A09-40C9-8626-87B329AF7868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B944A5A6-BCE8-4BAD-8622-831E74697ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B944A5A6-BCE8-4BAD-8622-831E74697ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B944A5A6-BCE8-4BAD-8622-831E74697ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B944A5A6-BCE8-4BAD-8622-831E74697ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
