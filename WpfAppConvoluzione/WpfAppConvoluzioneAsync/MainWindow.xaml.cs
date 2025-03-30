@@ -18,6 +18,8 @@ using System.Drawing.Printing;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Data.SqlTypes;
+using System.Threading;
 
 namespace WpfAppConvoluzioneAsync
 {
@@ -27,6 +29,8 @@ namespace WpfAppConvoluzioneAsync
     public partial class MainWindow : Window
     {
         string _fileName = ""; // Nome del file
+        object _lockImg = new object();
+        object _lockResImg = new object();
 
         public MainWindow()
         {
@@ -62,18 +66,30 @@ namespace WpfAppConvoluzioneAsync
         private async void btnTrasforma_Click(object sender, RoutedEventArgs e)
         {
             btnTrasforma.IsEnabled = false;
+            btnCaricaFoto.IsEnabled = false;
 
             // Input della matrice
             int[,] matControl = new int[3, 3];
-            matControl[0, 0] = int.Parse(txt00.Text);
-            matControl[0, 1] = int.Parse(txt01.Text);
-            matControl[0, 2] = int.Parse(txt02.Text);
-            matControl[1, 0] = int.Parse(txt10.Text);
-            matControl[1, 1] = int.Parse(txt11.Text);
-            matControl[1, 2] = int.Parse(txt12.Text);
-            matControl[2, 0] = int.Parse(txt20.Text);
-            matControl[2, 1] = int.Parse(txt21.Text);
-            matControl[2, 2] = int.Parse(txt22.Text);
+            TextBox[,] textBoxes = {
+                { txt00, txt01, txt02 },
+                { txt10, txt11, txt12 },
+                { txt20, txt21, txt22 }
+            };
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if(!int.TryParse(textBoxes[i, j].Text, out matControl[i, j]))
+                    {
+                        MessageBox.Show("Matrice con valori errati");
+                        btnTrasforma.IsEnabled = true;
+                        btnCaricaFoto.IsEnabled = true;
+                        return;
+                    }
+                }
+            }
+
 
             Bitmap imgOriginale = new Bitmap(_fileName); // Creazione dell'immagine
 
@@ -86,6 +102,7 @@ namespace WpfAppConvoluzioneAsync
             imgFoto.Source = BitmapToBitmapSource(imgRisultato); // Visualizza l'immagine nuova
 
             btnTrasforma.IsEnabled = true;
+            btnCaricaFoto.IsEnabled = true;
         }
 
         private async Task<Bitmap> Convoluzione(Bitmap img, int[,] matrice)
@@ -95,21 +112,35 @@ namespace WpfAppConvoluzioneAsync
             // Set progressbar
             lblEsito.Content = "Convoluzione in corso...";
             progressBar.Minimum = 0;
-            progressBar.Maximum = (img.Width * img.Height) / 2; // Area dell'immagine, numero di pixel
+            progressBar.Maximum = img.Width * img.Height; // Area dell'immagine, numero di pixel
 
-            for (int i = 0; i < img.Width; i++)
-            {
-                for (int j = 0; j < img.Height; j++)
-                {
-                    imgRis.SetPixel(i, j, CalcolaConvoluzione(img, i, j, matrice)); // Set del pixel con convoluzione
-                    progressBar.Value = img.Width * i + j + 1;
-                    await Task.Delay(1); // TODO : fixare questo
-                }
-            }
+            int width = img.Width / 4;
+            Task T1 = RangeConvoluzione(img, imgRis, matrice, width, width * 0);
+            Task T2 = RangeConvoluzione(img, imgRis, matrice, width, width * 1);
+            Task T3 = RangeConvoluzione(img, imgRis, matrice, width, width * 2);
+            Task T4 = RangeConvoluzione(img, imgRis, matrice, width, width * 3);
+
+            await Task.WhenAll(T1, T2, T3, T4);
 
             lblEsito.Content = "Convoluzione terminata";
             return imgRis;
 
+        }
+
+        private async Task RangeConvoluzione(Bitmap img, Bitmap imgRis, int[,] matrice, int width, int startX)
+        {
+            int height;
+            lock (_lockImg) height = img.Height;
+
+            for (int i = startX; i < width + startX; i++)
+            {
+                await Task.Delay(1);
+                for (int j = 0; j < height; j++)
+                {
+                    await Task.Run(() => { lock(_lockResImg) imgRis.SetPixel(i, j, CalcolaConvoluzione(img, i, j, matrice)); }); // Set del pixel con convoluzione
+                    progressBar.Value += 1;
+                }
+            }
         }
 
         private System.Drawing.Color CalcolaConvoluzione(Bitmap img, int x, int y, int[,] matrice)
@@ -120,7 +151,6 @@ namespace WpfAppConvoluzioneAsync
             B = 0;
 
             //Calcolo il prodotto della matrice
-
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -130,14 +160,28 @@ namespace WpfAppConvoluzioneAsync
                     int posY = y + j - 1;
 
                     // Gestisce la fuoriuscita dai margini
-                    if (posX < 0) { posX = 0; }
-                    else if (posX >= img.Width) { posX = img.Width - 1; }
+                    lock (_lockImg)
+                    {
+                        if (posX < 0) { posX = 0; }
+                        else if (posX >= img.Width)
+                        {
+                            posX = img.Width - 1;
+                        }
+                    }
 
-                    if (posY < 0) { posY = 0; }
-                    else if (posY >= img.Height) { posY = img.Height - 1; }
+                    lock (_lockImg)
+                    {
+                        if (posY < 0) { posY = 0; }
+                        else if (posY >= img.Height)
+                        {
+                            posY = img.Height - 1;
+                        }
+                    }
 
                     // Definizione del nuovo pixel
-                    System.Drawing.Color pixel = img.GetPixel(posX, posY);
+                    System.Drawing.Color pixel;
+                    lock (_lockImg)
+                        pixel = img.GetPixel(posX, posY);
                     R += pixel.R * matrice[i, j];
                     G += pixel.G * matrice[i, j];
                     B += pixel.B * matrice[i, j];
