@@ -17,6 +17,6 @@ Each folder is organized by subject and contains exercises, projects, and soluti
 - **Web Development:** HTML, CSS, Bootstrap, React
 
 ## 📝 Notes
-This repository is a collection of learning materials and projects developed during my studies.
+All the folders and materials are in Italian launguage.
 
 
