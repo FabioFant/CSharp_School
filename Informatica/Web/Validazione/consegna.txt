@@ -1,0 +1,25 @@
+Nome e cognome
+	Caratteri validi
+	Lunghezza min max
+
+Data di nascita
+	Verificare il formato
+	Verificare giorno, mese, anno
+	Verificare la data (troppo recente, troppo passata)
+
+Email
+	Verificare il formato
+	Caratteri consentiti
+	Validità dominio (facoltativo)
+
+Nome utente
+	Lunghezza
+	Caratteri consentiti
+	Unicità del nome utente
+
+Password
+	Lunghezza minima
+	Combinazione di caratteri
+		Lettere minuscole e maiuscole
+		Almeno un numero
+		Almeno un carattere speciale
