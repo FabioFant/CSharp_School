@@ -18,6 +18,6 @@ Each folder is organized by subject and contains exercises, projects, and soluti
 - **Web Development:** HTML, CSS, Bootstrap, React
 
 ## 📝 Notes
-All the folders and materials are in Italian launguage.
+All the folders and materials are in Italian launguage. :3
 
 
