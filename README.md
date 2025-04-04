@@ -14,6 +14,7 @@ Each folder is organized by subject and contains exercises, projects, and soluti
 
 - **Programming Languages:** C#, JavaScript
 - **Networking Tools:** Cisco Packet Tracer
+- **Electronic circuit design Tools:** Multisim
 - **Web Development:** HTML, CSS, Bootstrap, React
 
 ## 📝 Notes
