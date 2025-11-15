@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppFiles\ConsoleAppEsercizio3\bin\Debug\ConsoleAppEsercizio3.exe.config
-C:\Users\Utente\source\repos\ConsoleAppFiles\ConsoleAppEsercizio3\bin\Debug\ConsoleAppEsercizio3.exe
-C:\Users\Utente\source\repos\ConsoleAppFiles\ConsoleAppEsercizio3\bin\Debug\ConsoleAppEsercizio3.pdb
-C:\Users\Utente\source\repos\ConsoleAppFiles\ConsoleAppEsercizio3\obj\Debug\ConsoleAppEsercizio3.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppFiles\ConsoleAppEsercizio3\obj\Debug\ConsoleAppEsercizio3.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppFiles\ConsoleAppEsercizio3\obj\Debug\ConsoleAppEsercizio3.exe
-C:\Users\Utente\source\repos\ConsoleAppFiles\ConsoleAppEsercizio3\obj\Debug\ConsoleAppEsercizio3.pdb

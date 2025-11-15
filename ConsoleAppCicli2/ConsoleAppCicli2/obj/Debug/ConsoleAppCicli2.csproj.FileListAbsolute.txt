@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCicli2\bin\Debug\ConsoleAppCicli2.exe.config
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCicli2\bin\Debug\ConsoleAppCicli2.exe
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCicli2\bin\Debug\ConsoleAppCicli2.pdb
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCicli2\obj\Debug\ConsoleAppCicli2.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCicli2\obj\Debug\ConsoleAppCicli2.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCicli2\obj\Debug\ConsoleAppCicli2.exe
-C:\Users\Utente\source\repos\ConsoleAppCicli2\ConsoleAppCicli2\obj\Debug\ConsoleAppCicli2.pdb

@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensareRandom\bin\Debug\ConsoleAppPensareRandom.exe.config
-C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensareRandom\bin\Debug\ConsoleAppPensareRandom.exe
-C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensareRandom\bin\Debug\ConsoleAppPensareRandom.pdb
-C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensareRandom\obj\Debug\ConsoleAppPensareRandom.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensareRandom\obj\Debug\ConsoleAppPensareRandom.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensareRandom\obj\Debug\ConsoleAppPensareRandom.exe
-C:\Users\Utente\source\repos\ConsoleAppCicli\ConsoleAppPensareRandom\obj\Debug\ConsoleAppPensareRandom.pdb

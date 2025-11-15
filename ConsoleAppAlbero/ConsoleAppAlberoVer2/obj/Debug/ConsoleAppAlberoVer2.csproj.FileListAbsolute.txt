@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlberoVer2\bin\Debug\ConsoleAppAlberoVer2.exe.config
-C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlberoVer2\bin\Debug\ConsoleAppAlberoVer2.exe
-C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlberoVer2\bin\Debug\ConsoleAppAlberoVer2.pdb
-C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlberoVer2\obj\Debug\ConsoleAppAlberoVer2.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlberoVer2\obj\Debug\ConsoleAppAlberoVer2.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlberoVer2\obj\Debug\ConsoleAppAlberoVer2.exe
-C:\Users\Utente\source\repos\ConsoleAppAlbero\ConsoleAppAlberoVer2\obj\Debug\ConsoleAppAlberoVer2.pdb

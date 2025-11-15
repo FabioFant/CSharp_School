@@ -1,7 +1,0 @@
-C:\Users\Utente\source\repos\ConsoleAppClass\ConsoleAppClass\bin\Debug\ConsoleAppClass.exe.config
-C:\Users\Utente\source\repos\ConsoleAppClass\ConsoleAppClass\bin\Debug\ConsoleAppClass.exe
-C:\Users\Utente\source\repos\ConsoleAppClass\ConsoleAppClass\bin\Debug\ConsoleAppClass.pdb
-C:\Users\Utente\source\repos\ConsoleAppClass\ConsoleAppClass\obj\Debug\ConsoleAppClass.csproj.AssemblyReference.cache
-C:\Users\Utente\source\repos\ConsoleAppClass\ConsoleAppClass\obj\Debug\ConsoleAppClass.csproj.CoreCompileInputs.cache
-C:\Users\Utente\source\repos\ConsoleAppClass\ConsoleAppClass\obj\Debug\ConsoleAppClass.exe
-C:\Users\Utente\source\repos\ConsoleAppClass\ConsoleAppClass\obj\Debug\ConsoleAppClass.pdb
