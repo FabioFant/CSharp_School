@@ -6,7 +6,7 @@ This repository contains all the exercises I have completed in school across var
 - **TP-SIT**
 
 ## 📂 Structure
-Each folder is organized by subject and contains exercises, projects, and solutions related to the respective topics.
+Each folder is an exercise
 
 ## 🛠️ Technologies Used
 
