@@ -12,7 +12,7 @@ Each folder is organized by subject and contains exercises, projects, and soluti
 ## 🛠️ Technologies Used
 
 - **Networking Tools:** Cisco Packet Tracer
-- **Web Development:** HTML, CSS, Vue, PHP, Wordpress
+- **Web Development:** HTML, CSS, JS, TS, Bootstrap, Vue + Vite, PHP, Wordpress
 
 ## 📝 Notes
 All the folders and materials are in Italian launguage.
