@@ -1,0 +1,3 @@
+studente(!matricola, nome, cognome)
+laboratorio(!id, nome)
+ticket(!id, descrizione, data_orario, #matricola_studente, #id_lab)
